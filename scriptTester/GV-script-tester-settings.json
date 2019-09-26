@@ -1,0 +1,82 @@
+{
+	"MISCELLANEOUS": {
+		"ENABLE_ROLE_VIEW": false,
+		"CURRENT_ROLE": "hurry_manager",
+		"ENABLE_IDENTITY_KEY_VIEW": false,
+		"IDENTITY_KEY": "id",
+		"IDENTITY_VALUE": 666
+	},
+	"EXECUTION_SETTINGS": {
+		"IS_JAVASCRIPT": false,
+		"IS_JAVASCRIPT_DESCRIPTION": "false -> Groovy script  |  true -> Javascript",
+		"IS_FUNCTION": false,
+		"IS_FUNCTION_DESCRIPTION": "false -> script  |  true -> function"
+	},
+	"SCRIPT_TESTER_PROPERTIES": {
+		"JAVASCRIPT_FILE_PATH": "scriptTester/JavaScript.js",
+		"GV_FILE_BUFFER_NAME": "scriptTester/GVBuffer.txt",
+		"LOG_FILE_PATH": "scriptTester/environmentLog.txt"
+	},
+	"GVBUFFER_SETTINGS": {
+		"ENVIRONMENT_FILE_BUFFER_NAME": "scriptTester/ENV-GVBuffer.txt",
+		"ENVIRONMENT_GVBUFFER_NAME": "input",
+		"ENVIRONMENT_2_FILE_BUFFER_NAME": "scriptTester/ENV-2-GVBuffer.txt",
+		"ENVIRONMENT_2_GVBUFFER_NAME": "test-buffer-2"
+	},
+	"CURRENT_BUFFER": {
+		"description": "Object -> scriptTester/GVBuffer.txt",
+		"name": "data",
+		"properties list": [
+			{
+				"PROPERTY_NAME": "",
+				"PROPERTY_VALUE": ""
+			},
+			{
+				"PROPERTY_NAME": "",
+				"PROPERTY_VALUE": ""
+			},
+			{
+				"PROPERTY_NAME": "",
+				"PROPERTY_VALUE": ""
+			}
+		]
+	},
+	"EXTERNAL_BUFFERS": [
+		{
+			"description": "Object -> scriptTester/ENV-GVBuffer.txt",
+			"name": "env1",
+			"properties list": [
+				{
+					"PROPERTY_NAME": "",
+					"PROPERTY_VALUE": ""
+				},
+				{
+					"PROPERTY_NAME": "",
+					"PROPERTY_VALUE": ""
+				},
+				{
+					"PROPERTY_NAME": "",
+					"PROPERTY_VALUE": ""
+				}
+			]
+		},
+		{
+			"description": "Object -> scriptTester/ENV-2-GVBuffer2.txt",
+			"name": "env2",
+			"properties list": [
+				{
+					"PROPERTY_NAME": "",
+					"PROPERTY_VALUE": ""
+				},
+				{
+					"PROPERTY_NAME": "",
+					"PROPERTY_VALUE": ""
+				},
+				{
+					"PROPERTY_NAME": "",
+					"PROPERTY_VALUE": ""
+				}
+			]
+		}
+	]
+}
