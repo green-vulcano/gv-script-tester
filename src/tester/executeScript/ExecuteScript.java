@@ -119,9 +119,9 @@ public class ExecuteScript{
 		System.out.println();
 		System.out.println("> GVBuffer = " + gvbuffer.getObject());
 		System.out.println();
-		System.out.println("> PropertyMap:");
+		System.out.println("> Properties:");
 		for(String key:gvbuffer.getPropertyNames()) {
-			System.out.println("        > " + key + " = " + gvbuffer.getProperty(key));
+			System.out.println("    > " + key + " = " + gvbuffer.getProperty(key));
 		}
 		System.out.println("-----------------------------------------------");
 	}
@@ -134,9 +134,9 @@ public class ExecuteScript{
 		output += "\n";
 		output += "> GVBuffer = " + gvbuffer.getObject() + "\n";
 		output += "\n";
-		output += "> PropertyMap:" + "\n";
+		output += "> Properties:" + "\n";
 		for(String key:gvbuffer.getPropertyNames()) {
-			output += "        > " + key + " = " + gvbuffer.getProperty(key) + "\n";
+			output += "    > " + key + " = " + gvbuffer.getProperty(key) + "\n";
 		}
 		output += "-----------------------------------------------" + "\n";
 		LP.addToFileln(LOG_FILE_PATH, output);
