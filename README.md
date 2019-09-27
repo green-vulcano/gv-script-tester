@@ -2,7 +2,7 @@
 
 ### Overview
 
-**GV Script Tester** allows you to quickly run and debug a *Javascript/Groovy* script by setting up gvbuffers with the related properties (including many execution options), running the script using the **gv-engine** java classes and showing all changes in the related gvbuffers on the Eclipse console.
+**GV Script Tester** allows you to quickly run and debug a *Javascript/Groovy* script by setting up gvbuffers with the related properties (including many execution options), running the script using the [***gv-engine***](https://github.com/green-vulcano/gv-engine) java classes and showing all changes in the related gvbuffers on the Eclipse console.
 You can also set up multiple gvbuffers using the environment system. The changes of additional GVBuffers are showed in the file "environmentLog.txt" located in "scriptTester" folder.
 
 ### Installation
