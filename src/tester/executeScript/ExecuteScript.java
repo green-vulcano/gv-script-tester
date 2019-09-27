@@ -39,8 +39,8 @@ public class ExecuteScript{
 	////////////////////////////////////////////////
 
 	private static void initializeTest(GVBuffer data, HashMap<String,GVBuffer> environment) throws GVException, IOException {
-		Files.readAllBytes(Paths.get(GV_FILE_BUFFER_NAME));
-
+		
+		data.setObject(new String(Files.readAllBytes(Paths.get(GV_FILE_BUFFER_NAME))));
 		if(PROPERTY_NAME_1.length()!=0) data.setProperty(PROPERTY_NAME_1, PROPERTY_VALUE_1);
 		if(PROPERTY_NAME_2.length()!=0) data.setProperty(PROPERTY_NAME_2, PROPERTY_VALUE_2);
 		if(PROPERTY_NAME_3.length()!=0) data.setProperty(PROPERTY_NAME_3, PROPERTY_VALUE_3);
@@ -48,7 +48,7 @@ public class ExecuteScript{
 		if(PROPERTY_NAME_5.length()!=0) data.setProperty(PROPERTY_NAME_5, PROPERTY_VALUE_5);
 
 		GVBuffer prevData = new GVBuffer();
-		prevData.setObject(Files.readAllBytes(Paths.get(ENVIRONMENT_FILE_BUFFER_NAME)));
+		prevData.setObject(new String(Files.readAllBytes(Paths.get(ENVIRONMENT_FILE_BUFFER_NAME))));
 		if(ENV_PROPERTY_NAME_1.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_1, ENV_PROPERTY_VALUE_1);
 		if(ENV_PROPERTY_NAME_2.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_2, ENV_PROPERTY_VALUE_2);
 		if(ENV_PROPERTY_NAME_3.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_3, ENV_PROPERTY_VALUE_3);
@@ -57,7 +57,7 @@ public class ExecuteScript{
 		environment.put(ENVIRONMENT_GVBUFFER_NAME,prevData);
 
 		GVBuffer prevData2 = new GVBuffer();
-		prevData2.setObject(Files.readAllBytes(Paths.get(ENVIRONMENT_2_FILE_BUFFER_NAME)));
+		prevData2.setObject(new String(Files.readAllBytes(Paths.get(ENVIRONMENT_2_FILE_BUFFER_NAME))));
 		if(ENV_2_PROPERTY_NAME_1.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_1, ENV_2_PROPERTY_VALUE_1);
 		if(ENV_2_PROPERTY_NAME_2.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_2, ENV_2_PROPERTY_VALUE_2);
 		if(ENV_2_PROPERTY_NAME_3.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_3, ENV_2_PROPERTY_VALUE_3);
