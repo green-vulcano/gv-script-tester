@@ -28,18 +28,18 @@ Groovy abilitation      ->  tester.settings [Constants.java]
     Note: If your script is a function with a boolean return, set ***IS_CONDITION*** constants as **true**. 
     (Try to run example 3 - Groovy script with boolean return)
 
-To edit current (input) GVBuffer object, you have to edit the file "GVBuffer.txt" located in "scriptTester" folder. If you need to add/modify properties of the current GVBuffer, you have to edit the file "Constants.java" in "tester.settings" package.
+To edit current (input) GVBuffer object, you have to edit the file "DATA-GVBuffer.txt" located in "scriptTester" folder. If you need to add/modify properties of the current GVBuffer, you have to edit the file "Constants.java" in "tester.settings" package.
 
 ```
-Current buffer content      ->  /scriptTester/ [GVBuffer.txt]
+Current buffer content      ->  /scriptTester/ [DATA-GVBuffer.txt]
 Current buffer properties   ->  tester.settings [Constants.java]
 ```
 
-To add an additional buffer, use "ENV-GVBuffer.txt" file (located in "scriptTester" folder) and setup buffer name and its properties in the Constants file (tester.settings [Constants.java] ). You can use up to 2 additional GVBuffers.
+To add an additional buffer, use "ENV-X-GVBuffer.txt" file (located in "scriptTester" folder) and setup buffer name and its properties in the Constants file (tester.settings [Constants.java] ). You can use up to 2 additional GVBuffers.
 
 ```
-Current buffer              ->  /scriptTester/ [GVBuffer.txt]
-Additional buffer 1 object  ->  /scriptTester/ [ENV-GVBuffer.txt]
+Current buffer              ->  /scriptTester/ [DATA-GVBuffer.txt]
+Additional buffer 1 object  ->  /scriptTester/ [ENV-1-GVBuffer.txt]
 Additional buffer 2 object  ->  /scriptTester/ [ENV-2-GVBuffer.txt]
 buffers properties          ->  tester.settings [Constants.java]
 ```
