@@ -136,6 +136,7 @@ public class ExecuteScript{
 			output += "\n";
 		}
 		String bufferObject = (String) gvbuffer.getObject();
+		bufferObject = bufferObject==null?"":bufferObject;
 		if(bufferObject.contains("\n")) {
 			output += "> GVBuffer (multiline view): \n" + bufferObject + "\n";
 		} else {
@@ -145,6 +146,7 @@ public class ExecuteScript{
 		output += "> Properties:" + "\n";
 		for(String key:gvbuffer.getPropertyNames()) {
 			String propertyValue = gvbuffer.getProperty(key);
+			propertyValue = propertyValue==null?"":propertyValue;
 			if(propertyValue.contains("\n")) {
 				output += "    > " + key + " (multiline view): \n" + propertyValue + "\n";
 			} else {
