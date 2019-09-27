@@ -2,11 +2,11 @@ package tester.script;
 
 import static tester.settings.Constants.JAVASCRIPT_FILE_PATH;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 
 import javax.script.*;
-
-import LukePack.LP;
 
 public class JavaScript {
 	
@@ -15,7 +15,7 @@ public class JavaScript {
         ScriptEngine engine = setupJsEngine(data, environment);
         
         // evaluate JavaScript code from given file
-        String fileBody = LP.readFile(JAVASCRIPT_FILE_PATH);
+        String fileBody = new String(Files.readAllBytes(Paths.get(JAVASCRIPT_FILE_PATH)));
         engine.eval(fileBody);
         
     }
@@ -25,7 +25,7 @@ public class JavaScript {
         ScriptEngine engine = setupJsEngine(data, environment);
         
         // evaluate JavaScript code from given file
-        String fileBody = LP.readFile(JAVASCRIPT_FILE_PATH);
+        String fileBody = new String(Files.readAllBytes(Paths.get(JAVASCRIPT_FILE_PATH)));
         return (boolean) engine.eval(fileBody);
         
     }
