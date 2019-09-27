@@ -1,3 +1,5 @@
+// example 1: Javascript
+
 var input = JSON.parse(new java.lang.String(data.getObject()));
 
 inputPlate = input.plate
