@@ -118,31 +118,41 @@ public class ExecuteScript{
 	}
 
 	public static void printGVBuffer(GVBuffer gvbuffer) {
-		System.out.println("---------------- GV BUFFER --------------------");
-		System.out.println();
-		System.out.println("> GVBuffer = " + gvbuffer.getObject());
-		System.out.println();
-		System.out.println("> Properties:");
-		for(String key:gvbuffer.getPropertyNames()) {
-			System.out.println("    > " + key + " = " + gvbuffer.getProperty(key));
-		}
-		System.out.println("-----------------------------------------------");
+		String output = generateBufferInfo(gvbuffer, null);
+		System.out.println(output);
 	}
 
 	public static void writeInTheLog(GVBuffer gvbuffer, String bufferName) throws IOException {
+		String output = generateBufferInfo(gvbuffer, bufferName);
+		Files.write(Paths.get(LOG_FILE_PATH), output.getBytes(), StandardOpenOption.APPEND);
+	}
+	
+	public static String generateBufferInfo(GVBuffer gvbuffer, String bufferName) {
 		String output = "";
 		output += "---------------- GV BUFFER -------------------- \n";
 		output += "\n";
-		output += "> GVBuffer name = " + bufferName + "\n";
-		output += "\n";
-		output += "> GVBuffer = " + gvbuffer.getObject() + "\n";
+		if(bufferName!=null) {
+			output += "> GVBuffer name = " + bufferName + "\n";
+			output += "\n";
+		}
+		String bufferObject = (String) gvbuffer.getObject();
+		if(bufferObject.contains("\n")) {
+			output += "> GVBuffer: \n" + bufferObject + "\n";
+		} else {
+			output += "> GVBuffer = " + bufferObject + "\n";
+		}
 		output += "\n";
 		output += "> Properties:" + "\n";
 		for(String key:gvbuffer.getPropertyNames()) {
-			output += "    > " + key + " = " + gvbuffer.getProperty(key) + "\n";
+			String propertyValue = gvbuffer.getProperty(key);
+			if(propertyValue.contains("\n")) {
+				output += "    > " + key + ": \n" + propertyValue + "\n";
+			} else {
+				output += "    > " + key + " = " + propertyValue + "\n";
+			}
 		}
 		output += "-----------------------------------------------" + "\n";
-		Files.write(Paths.get(LOG_FILE_PATH), output.getBytes(), StandardOpenOption.APPEND);
+		return output;
 	}
 
 }
