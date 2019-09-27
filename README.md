@@ -7,7 +7,7 @@ You can also set up multiple gvbuffers using the environment system. The changes
 
 ### Installation
 
-- It's very simple, just clone *gv-script-tester*, open the project with your favourite IDE and than import [***gv-engine***](https://github.com/green-vulcano/gv-engine) project in the *gv-script-tester* build path configuration.
+- It's very simple, just clone ***gv-script-tester***, open the project with your favourite IDE and than import [***gv-engine***](https://github.com/green-vulcano/gv-engine) project in the *gv-script-tester* build path configuration.
 
 ### How to use
 
