@@ -79,8 +79,9 @@ public class ExecuteScript{
 		if(IS_FUNCTION) {
 			function = " function";
 		}
-		System.out.println("         SCRIPT EXECUTION (" + lang + function + ")");
-		Files.write(Paths.get(LOG_FILE_PATH), (">>>>>>>> SCRIPT EXECUTION (" + lang + function +") <<<<<<<< \n").getBytes(), StandardOpenOption.APPEND);
+		String message = "         SCRIPT EXECUTION (" + lang + function + ") \n \n";
+		System.out.print(message);
+		Files.write(Paths.get(LOG_FILE_PATH), (message).getBytes(), StandardOpenOption.APPEND);
 		GroovyScript gs = null;
 		JavaScript javascript= null;
 		boolean conditionReturn = false;
@@ -110,7 +111,6 @@ public class ExecuteScript{
 		if(ENABLE_IDENTITY_KEY_VIEW) {
 			System.out.println("> "+ IDENTITY_KEY + " = " + IDENTITY_VALUE);
 		}
-		System.out.println();
 		printGVBuffer(data);	
 		for(String bufferName: environment.keySet()) {
 			writeInTheLog(environment.get(bufferName),bufferName);
@@ -119,7 +119,7 @@ public class ExecuteScript{
 
 	public static void printGVBuffer(GVBuffer gvbuffer) {
 		String output = generateBufferInfo(gvbuffer, null);
-		System.out.println(output);
+		System.out.print(output);
 	}
 
 	public static void writeInTheLog(GVBuffer gvbuffer, String bufferName) throws IOException {
@@ -151,7 +151,7 @@ public class ExecuteScript{
 				output += "    > " + key + " = " + propertyValue + "\n";
 			}
 		}
-		output += "-----------------------------------------------" + "\n";
+		output += "-----------------------------------------------" + "\n \n";
 		return output;
 	}
 
