@@ -14,7 +14,7 @@ The installation is very simple, just clone ***gv-script-tester***, open the pro
 To run a Javascript script, edit the file "JavaScript.js" located in "scriptTester" folder and set ***IS_JAVASCRIPT*** constant as **true**. (Try to run example 1: Javascript)
 
 ```
-JavaScript body         ->	/scriptTester/ [JavaScript.js]
+JavaScript body         ->  /scriptTester/ [JavaScript.js]
 Javascript abilitation  ->  tester.settings [Constants.java]
 ```
 
