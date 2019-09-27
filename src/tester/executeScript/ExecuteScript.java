@@ -66,8 +66,18 @@ public class ExecuteScript{
 		for(String bufferName: environment.keySet()) {
 			writeInTheLog(environment.get(bufferName),bufferName);
 		}
-		System.out.println("              SCRIPT EXECUTION");
-		LP.addToFileln(LOG_FILE_PATH, ">>>>>>>>>>>> SCRIPT EXECUTION <<<<<<<<<<<< \n");
+		String lang;
+		if(IS_JAVASCRIPT) {
+			lang = "Javascript";
+		} else {
+			lang = "Groovy";
+		}
+		String function = "";
+		if(IS_FUNCTION) {
+			function = " function";
+		}
+		System.out.println("         SCRIPT EXECUTION (" + lang + function + ")");
+		LP.addToFileln(LOG_FILE_PATH, ">>>>>>>> SCRIPT EXECUTION (" + lang + function +") <<<<<<<< \n");
 		GroovyScript gs = null;
 		JavaScript javascript= null;
 		boolean conditionReturn = false;
