@@ -25,7 +25,8 @@ Groovy Script body 	->  tester.script [GroovyScript.java]
 Groovy abilitation      ->  tester.settings [Constants.java]
 ```
 
-    Note: If your script is a function with a boolean return, set ***IS_CONDITION*** constants as **true**. (Try to run example 3 - Groovy script with boolean return)
+    Note: If your script is a function with a boolean return, set ***IS_CONDITION*** constants as **true**. 
+    (Try to run example 3 - Groovy script with boolean return)
 
 To edit current (input) GVBuffer object, you have to edit the file "GVBuffer.txt" located in "scriptTester" folder. If you need to add/modify properties of the current GVBuffer, you have to edit the file "Constants.java" in "tester.settings" package.
 
