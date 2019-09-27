@@ -29,10 +29,10 @@ public class ExecuteScript{
 				System.out.println("> Returned value = " + conditionReturn);
 			}
 		} catch (Exception e) {
-			System.out.println("> SCRIPT EXECUTION ERROR!");
-			System.out.print("> Error: ");
+			String error = "> SCRIPT EXECUTION ERROR! \n> Error: ";
+			System.out.print(error);
 			e.printStackTrace(); 
-			Files.write(Paths.get(LOG_FILE_PATH), "".getBytes(), StandardOpenOption.APPEND);
+			Files.write(Paths.get(LOG_FILE_PATH), (error + e.getMessage()).getBytes(), StandardOpenOption.APPEND);
 		}
 	}
 
