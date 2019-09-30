@@ -98,40 +98,36 @@ Execution:
     > PRIVATE_CAR_PLATE = AD123CD
 -----------------------------------------------
 ```
-#### Example 2 and 3: Javascript
+#### Example 2 and 3: Groovy
 Have fun making these two examples work!
 
 Scripts:
 ```
-public class GroovyScript {
+public void testScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
 
-	public void testScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
+	///////////////////////////////  SCRIPT AREA  ///////////////////////////////
 
-		///////////////////////////////  SCRIPT AREA  ///////////////////////////////
+	// example 2 - Groovy script
+	org.json.JSONObject inputJson = new org.json.JSONObject(data.getObject());
+	String city = inputJson.getString("city").toUpperCase();
+    data.setProperty("CITY", city);
 
-		// example 2 - Groovy script
-		org.json.JSONObject inputJson = new org.json.JSONObject(data.getObject());
-		String city = inputJson.getString("city").toUpperCase();
-	    data.setProperty("CITY", city);
-
-		/////////////////////////////////////////////////////////////////////////////
-
-	}
-
-	public boolean testCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
-
-		/////////////////////////// CONDITION SCRIPT AREA  ///////////////////////////
-
-		// example 3 - Groovy script with boolean return
-		if(environment.get("test-buffer").getProperty("example").equals("hello!")) {
-			return true;
-		} else {
-			return false;
-		}		
-
-		/////////////////////////////////////////////////////////////////////////////
-
-	}	
+	/////////////////////////////////////////////////////////////////////////////
 
 }
+
+public boolean testCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
+
+	/////////////////////////// CONDITION SCRIPT AREA  ///////////////////////////
+
+	// example 3 - Groovy script with boolean return
+	if(environment.get("test-buffer").getProperty("example").equals("hello!")) {
+		return true;
+	} else {
+		return false;
+	}		
+
+	/////////////////////////////////////////////////////////////////////////////
+
+}	
 ```
