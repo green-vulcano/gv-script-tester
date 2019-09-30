@@ -11,14 +11,14 @@ The installation is very simple, just clone ***gv-script-tester***, open the pro
 
 ### How to use
 
-To run a Javascript script, edit the file "JavaScript.js" located in "scriptTester" folder and set ***IS_JAVASCRIPT*** constant as **true**. (Try to run example 1: Javascript)
+To run a ***Javascript script***, edit the file "JavaScript.js" located in "scriptTester" folder and set ***IS_JAVASCRIPT*** constant as **true**. (Try to run example 1: Javascript)
 
 ```
 JavaScript body         ->  /scriptTester/ [JavaScript.js]
 Javascript abilitation  ->  tester.settings [Constants.java]
 ```
 
-To run a Groovy script, edit the script area in the file "GroovyScript.java" located in "tester.script" package and set ***IS_JAVASCRIPT*** constant as **false**. (Try to run example 2 - Groovy script)
+To run a ***Groovy script***, edit the script area in the file "GroovyScript.java" located in "tester.script" package and set ***IS_JAVASCRIPT*** constant as **false**. (Try to run example 2 - Groovy script)
 
 ```
 Groovy Script body      ->  tester.script [GroovyScript.java]
