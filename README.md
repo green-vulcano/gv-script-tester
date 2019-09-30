@@ -41,6 +41,7 @@ To add an ***additional buffer***, use *ENV-X-GVBuffer.txt* file (located in *sc
 Current buffer              ->  /scriptTester/ [DATA-GVBuffer.txt]
 Additional buffer 1 object  ->  /scriptTester/ [ENV-1-GVBuffer.txt]
 Additional buffer 2 object  ->  /scriptTester/ [ENV-2-GVBuffer.txt]
+environment buffers log     ->  /scriptTester/ [environmentLog.txt]
 buffers properties          ->  tester.settings [Constants.java]
 ```
 
