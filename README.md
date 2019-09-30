@@ -50,8 +50,8 @@ To edit miscellaneous GV-SriptTester options and set up properties or buffers se
 GV-SriptTester settings     ->  tester.settings [Constants.java] 
 ```
 
-### Example 1
-
+### Examples
+## Example 1: Javascript
 Script:
 ```
 // example 1: Javascript
@@ -98,9 +98,7 @@ Execution:
     > PRIVATE_CAR_PLATE = AD123CD
 -----------------------------------------------
 ```
-
-### Example 2,3
-
+## Example 2 and 3: Javascript
 ```
 public class GroovyScript {
 
