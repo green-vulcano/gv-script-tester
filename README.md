@@ -52,6 +52,25 @@ GV-SriptTester settings     ->  tester.settings [Constants.java]
 
 ### Example 1
 
+Script:
+```
+// example 1: Javascript
+
+var input = JSON.parse(new java.lang.String(data.getObject()));
+
+inputPlate = input.plate
+inputColor = input.color
+
+if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
+	name = data.getProperty("FIRST_NAME")
+	surname = data.getProperty("LAST_NAME")
+	var output = name + " " + surname + "'s car is " + inputColor + "!"
+	data.setObject(output)
+} else {
+	data.setObject("Car not found!")
+}
+```
+Execution:
 ```
 ---------------- GV BUFFER -------------------- 
 
@@ -78,4 +97,40 @@ GV-SriptTester settings     ->  tester.settings [Constants.java]
     > LAST_NAME = Ginotti
     > PRIVATE_CAR_PLATE = AD123CD
 -----------------------------------------------
+```
+
+### Example 2,3
+
+```
+public class GroovyScript {
+
+	public void testScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
+
+		///////////////////////////////  SCRIPT AREA  ///////////////////////////////
+
+		// example 2 - Groovy script
+		org.json.JSONObject inputJson = new org.json.JSONObject(data.getObject());
+		String city = inputJson.getString("city").toUpperCase();
+	    data.setProperty("CITY", city);
+
+		/////////////////////////////////////////////////////////////////////////////
+
+	}
+
+	public boolean testCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
+
+		/////////////////////////// CONDITION SCRIPT AREA  ///////////////////////////
+
+		// example 3 - Groovy script with boolean return
+		if(environment.get("test-buffer").getProperty("example").equals("hello!")) {
+			return true;
+		} else {
+			return false;
+		}		
+
+		/////////////////////////////////////////////////////////////////////////////
+
+	}	
+
+}
 ```
