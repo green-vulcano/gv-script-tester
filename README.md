@@ -3,7 +3,7 @@
 ### Overview
 
 **GV Script Tester** allows you to quickly run and debug a *Javascript/Groovy* script using the [***gv-engine***](https://github.com/green-vulcano/gv-engine) java classes by setting up gvbuffers with the related properties (including many execution options), running the script showing its output and all the changes in the related gvbuffers.
-You can also set up multiple gvbuffers using the environment system. The changes of additional GVBuffers are showed in the file *environmentLog.txt* located in *scriptTester* folder.
+You can also set up multiple gvbuffers using the environment system. 
 
 ### Installation
 
@@ -35,7 +35,7 @@ Current buffer content      ->  /scriptTester/ [DATA-GVBuffer.txt]
 Current buffer properties   ->  tester.settings [Constants.java]
 ```
 
-To add an ***additional buffer***, use *ENV-X-GVBuffer.txt* file (located in *scriptTester* folder) and setup buffer name and its properties in the Constants file (tester.settings [Constants.java] ). You can use up to 2 additional GVBuffers.
+To add an ***additional buffer***, use *ENV-X-GVBuffer.txt* file (located in *scriptTester* folder) and setup buffer name and its properties in the Constants file (tester.settings [Constants.java] ). You can use up to 2 additional GVBuffers. The changes of additional GVBuffers are showed in the file *environmentLog.txt* located in *scriptTester* folder.
 
 ```
 Current buffer              ->  /scriptTester/ [DATA-GVBuffer.txt]
