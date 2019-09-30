@@ -50,3 +50,32 @@ To edit miscellaneous GV-SriptTester options and set up properties or buffers se
 GV-SriptTester settings     ->  tester.settings [Constants.java] 
 ```
 
+### Example 1
+
+```
+---------------- GV BUFFER -------------------- 
+
+> GVBuffer (multiline view): 
+{
+"plate":"AD123CD",
+"color":"red"
+}
+
+> Properties:
+    > FIRST_NAME = Gino
+    > LAST_NAME = Ginotti
+    > PRIVATE_CAR_PLATE = AD123CD
+-----------------------------------------------
+ 
+         SCRIPT EXECUTION (Javascript) 
+ 
+---------------- GV BUFFER -------------------- 
+
+> GVBuffer = Gino Ginotti's car is red!
+
+> Properties:
+    > FIRST_NAME = Gino
+    > LAST_NAME = Ginotti
+    > PRIVATE_CAR_PLATE = AD123CD
+-----------------------------------------------
+```
