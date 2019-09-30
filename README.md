@@ -51,7 +51,7 @@ GV-SriptTester settings     ->  tester.settings [Constants.java]
 ```
 
 ### Examples
-## Example 1: Javascript
+#### Example 1: Javascript
 Script:
 ```
 // example 1: Javascript
@@ -98,7 +98,10 @@ Execution:
     > PRIVATE_CAR_PLATE = AD123CD
 -----------------------------------------------
 ```
-## Example 2 and 3: Javascript
+#### Example 2 and 3: Javascript
+Have fun making these two examples work!
+
+Scripts:
 ```
 public class GroovyScript {
 
