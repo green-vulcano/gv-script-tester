@@ -24,6 +24,7 @@ public interface Constants {
 	public static final String GV_FILE_BUFFER_NAME = "scriptTester/DATA-GVBuffer.txt";	
 	public static final String ENVIRONMENT_1_FILE_BUFFER_NAME = "scriptTester/ENV-1-GVBuffer.txt";		
 	public static final String ENVIRONMENT_2_FILE_BUFFER_NAME = "scriptTester/ENV-2-GVBuffer.txt";		
+	public static final String ENVIRONMENT_3_FILE_BUFFER_NAME = "scriptTester/ENV-3-GVBuffer.txt";
 	
 	
 	//// Property in the current buffer (Object -> scriptTester/GVBuffer.txt) ////
@@ -43,6 +44,9 @@ public interface Constants {
 	public static final String PROPERTY_NAME_5 = "";
 	public static final String PROPERTY_VALUE_5 = "";
 
+	public static final String PROPERTY_NAME_6 = "";
+	public static final String PROPERTY_VALUE_6 = "";
+	
 	
 	//// Property in buffer X (Object -> scriptTester/ENV-GVBuffer.txt) ////
 	
@@ -63,11 +67,14 @@ public interface Constants {
 	public static final String ENV_PROPERTY_NAME_5 = "";
 	public static final String ENV_PROPERTY_VALUE_5 = "";
 	
+	public static final String ENV_PROPERTY_NAME_6 = "";
+	public static final String ENV_PROPERTY_VALUE_6 = "";
+	
 	
 	//// Property in buffer Y (Object -> scriptTester/ENV-2-GVBuffer.txt) ////
 	
 	public static final String ENVIRONMENT_2_GVBUFFER_NAME = "buffer-y";
-	
+
 	public static final String ENV_2_PROPERTY_NAME_1 = "";
 	public static final String ENV_2_PROPERTY_VALUE_1 = "";
 	
@@ -76,5 +83,14 @@ public interface Constants {
 
 	public static final String ENV_2_PROPERTY_NAME_3 = "";
 	public static final String ENV_2_PROPERTY_VALUE_3 = "";
+	
+	public static final String ENV_2_PROPERTY_NAME_4 = "";
+	public static final String ENV_2_PROPERTY_VALUE_4 = "";
+	
+	public static final String ENV_2_PROPERTY_NAME_5 = "";
+	public static final String ENV_2_PROPERTY_VALUE_5 = "";
+
+	public static final String ENV_2_PROPERTY_NAME_6 = "";
+	public static final String ENV_2_PROPERTY_VALUE_6 = "";
 	
 }
