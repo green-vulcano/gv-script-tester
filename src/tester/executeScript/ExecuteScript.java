@@ -39,7 +39,7 @@ public class ExecuteScript{
 	////////////////////////////////////////////////
 
 	private static void initializeTest(GVBuffer data, HashMap<String,GVBuffer> environment) throws GVException, IOException {
-		
+
 		data.setObject(new String(Files.readAllBytes(Paths.get(GV_FILE_BUFFER_NAME))));
 		if(PROPERTY_NAME_1.length()!=0) data.setProperty(PROPERTY_NAME_1, PROPERTY_VALUE_1);
 		if(PROPERTY_NAME_2.length()!=0) data.setProperty(PROPERTY_NAME_2, PROPERTY_VALUE_2);
@@ -126,7 +126,7 @@ public class ExecuteScript{
 		String output = generateBufferInfo(gvbuffer, bufferName);
 		Files.write(Paths.get(LOG_FILE_PATH), output.getBytes(), StandardOpenOption.APPEND);
 	}
-	
+
 	public static String generateBufferInfo(GVBuffer gvbuffer, String bufferName) {
 		String output = "";
 		output += "---------------- GV BUFFER -------------------- \n";
@@ -142,13 +142,18 @@ public class ExecuteScript{
 			output += "> GVBuffer = " + bufferObject + "\n";
 		}
 		output += "\n";
-		output += "> Properties:" + "\n";
-		for(String key:gvbuffer.getPropertyNames()) {
-			String propertyValue = gvbuffer.getProperty(key);
-			if(propertyValue!=null && propertyValue.contains("\n")) {
-				output += "    > " + key + " (multiline view): \n" + propertyValue + "\n";
-			} else {
-				output += "    > " + key + " = " + propertyValue + "\n";
+
+		if(gvbuffer.getPropertyNames().length<1) {
+			output += "> No Properties" + "\n";
+		} else {
+			output += "> Properties:" + "\n";
+			for(String key:gvbuffer.getPropertyNames()) {
+				String propertyValue = gvbuffer.getProperty(key);
+				if(propertyValue!=null && propertyValue.contains("\n")) {
+					output += "    > " + key + " (multiline view): \n" + propertyValue + "\n";
+				} else {
+					output += "    > " + key + " = " + propertyValue + "\n";
+				}
 			}
 		}
 		output += "-----------------------------------------------" + "\n \n";
