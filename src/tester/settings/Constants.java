@@ -93,4 +93,27 @@ public interface Constants {
 	public static final String ENV_2_PROPERTY_NAME_6 = "";
 	public static final String ENV_2_PROPERTY_VALUE_6 = "";
 	
+	
+	//// Property in buffer Z (Object -> scriptTester/ENV-3-GVBuffer.txt) ////
+	
+	public static final String ENVIRONMENT_3_GVBUFFER_NAME = "buffer-z";
+
+	public static final String ENV_3_PROPERTY_NAME_1 = "";
+	public static final String ENV_3_PROPERTY_VALUE_1 = "";
+	
+	public static final String ENV_3_PROPERTY_NAME_2 = "";
+	public static final String ENV_3_PROPERTY_VALUE_2 = "";
+
+	public static final String ENV_3_PROPERTY_NAME_3 = "";
+	public static final String ENV_3_PROPERTY_VALUE_3 = "";
+	
+	public static final String ENV_3_PROPERTY_NAME_4 = "";
+	public static final String ENV_3_PROPERTY_VALUE_4 = "";
+	
+	public static final String ENV_3_PROPERTY_NAME_5 = "";
+	public static final String ENV_3_PROPERTY_VALUE_5 = "";
+
+	public static final String ENV_3_PROPERTY_NAME_6 = "";
+	public static final String ENV_3_PROPERTY_VALUE_6 = "";
+	
 }
