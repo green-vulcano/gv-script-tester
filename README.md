@@ -71,7 +71,7 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	data.setObject("Car not found!")
 }
 ```
-Execution:
+Execution output:
 ```
 ---------------- GV BUFFER -------------------- 
 
