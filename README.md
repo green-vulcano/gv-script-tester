@@ -53,7 +53,7 @@ GV-SriptTester settings     ->  tester.settings [Constants.java]
 
 ### Examples
 #### Example 1: Javascript
-Script:
+Script (in JavaScript.js):
 ```
 // example 1: Javascript
 
