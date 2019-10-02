@@ -2,29 +2,10 @@ package tester.settings;
 
 public interface Constants {
 	
-	//// Miscellanous ////
-	
-	public static final boolean ENABLE_ROLE_VIEW = false;
-	public static final String CURRENT_ROLE = "hurry_manager";
-	public static final boolean ENABLE_IDENTITY_KEY_VIEW = false;
-	public static final String IDENTITY_KEY = "id";
-	public static final String IDENTITY_VALUE = "666";
-	
-	
 	//// Execution settings
 
 	public static final boolean IS_JAVASCRIPT = true;  // false -> Groovy script  |  true -> Javascript
-	public static final boolean IS_FUNCTION = false;  // false -> script  |  true -> function
-	
-	
-	//// ScriptTester property ////
-	
-	public static final String JAVASCRIPT_FILE_PATH = "scriptTester/JavaScript.js";
-	public static final String LOG_FILE_PATH = "scriptTester/environmentLog.txt";
-	public static final String GV_FILE_BUFFER_NAME = "scriptTester/DATA-GVBuffer.txt";	
-	public static final String ENVIRONMENT_1_FILE_BUFFER_NAME = "scriptTester/ENV-1-GVBuffer.txt";		
-	public static final String ENVIRONMENT_2_FILE_BUFFER_NAME = "scriptTester/ENV-2-GVBuffer.txt";		
-	public static final String ENVIRONMENT_3_FILE_BUFFER_NAME = "scriptTester/ENV-3-GVBuffer.txt";
+	public static final boolean IS_FUNCTION = false;  // false -> script  |  true -> function	
 	
 	
 	//// Property in the current buffer (Object -> scriptTester/GVBuffer.txt) ////
