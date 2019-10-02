@@ -43,7 +43,7 @@ public interface Constants {
 	
 	//// Property in buffer X (Object -> scriptTester/ENV-GVBuffer.txt) ////
 	
-	public static final String ENVIRONMENT_1_GVBUFFER_NAME = "buffer-x";
+	public static final String ENVIRONMENT_1_GVBUFFER_NAME = "test";
 	
 	public static final String ENV_PROPERTY_NAME_1 = "TAX";
 	public static final String ENV_PROPERTY_VALUE_1 = "10";
@@ -66,7 +66,7 @@ public interface Constants {
 	
 	//// Property in buffer Y (Object -> scriptTester/ENV-2-GVBuffer.txt) ////
 	
-	public static final String ENVIRONMENT_2_GVBUFFER_NAME = "buffer-y";
+	public static final String ENVIRONMENT_2_GVBUFFER_NAME = "";
 
 	public static final String ENV_2_PROPERTY_NAME_1 = "";
 	public static final String ENV_2_PROPERTY_VALUE_1 = "";
@@ -89,7 +89,7 @@ public interface Constants {
 	
 	//// Property in buffer Z (Object -> scriptTester/ENV-3-GVBuffer.txt) ////
 	
-	public static final String ENVIRONMENT_3_GVBUFFER_NAME = "buffer-z";
+	public static final String ENVIRONMENT_3_GVBUFFER_NAME = "";
 
 	public static final String ENV_3_PROPERTY_NAME_1 = "";
 	public static final String ENV_3_PROPERTY_VALUE_1 = "";
