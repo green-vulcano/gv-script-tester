@@ -49,6 +49,8 @@ public class ExecuteScript{
 		if(PROPERTY_NAME_6.length()!=0) data.setProperty(PROPERTY_NAME_6, PROPERTY_VALUE_6);
 		if(PROPERTY_NAME_7.length()!=0) data.setProperty(PROPERTY_NAME_7, PROPERTY_VALUE_7);
 		if(PROPERTY_NAME_8.length()!=0) data.setProperty(PROPERTY_NAME_8, PROPERTY_VALUE_8);
+		if(PROPERTY_NAME_9.length()!=0) data.setProperty(PROPERTY_NAME_9, PROPERTY_VALUE_9);
+		if(PROPERTY_NAME_10.length()!=0) data.setProperty(PROPERTY_NAME_10, PROPERTY_VALUE_10);
 
 		GVBuffer prevData = new GVBuffer();
 		prevData.setObject(new String(Files.readAllBytes(Paths.get(ENVIRONMENT_1_FILE_BUFFER_NAME))));

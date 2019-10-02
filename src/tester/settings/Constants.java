@@ -53,6 +53,12 @@ public interface Constants {
 	public static final String PROPERTY_NAME_8 = "";
 	public static final String PROPERTY_VALUE_8 = "";
 	
+	public static final String PROPERTY_NAME_9 = "";
+	public static final String PROPERTY_VALUE_9 = "";
+
+	public static final String PROPERTY_NAME_10 = "";
+	public static final String PROPERTY_VALUE_10 = "";
+	
 	
 	//// Property in buffer X (Object -> scriptTester/ENV-GVBuffer.txt) ////
 	
