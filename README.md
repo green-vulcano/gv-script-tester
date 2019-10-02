@@ -35,7 +35,7 @@ Current buffer content      ->  /scriptTester/ [DATA-GVBuffer.txt]
 Current buffer properties   ->  /src/tester/settings/ [Constants.java]
 ```
 
-To add an ***additional buffer***, use *ENV-X-GVBuffer.txt* file and setup buffer name and its properties in the Constants file (Constants.java). You can use up to 3 additional GVBuffers. The changes of additional GVBuffers are showed in the file *environmentLog.txt*.
+To add an ***additional buffer***, use *ENV-X-GVBuffer.txt* file for the buffer object and setup buffer name and its properties in Constants.java (remind that gvbuffers with non name will be ignored by the GV Script Tester). You can use up to 3 additional GVBuffers, the changes of additional GVBuffers during the execution are showed in the file *environmentLog.txt*.
 
 ```
 Current buffer              ->  /scriptTester/ [DATA-GVBuffer.txt]
