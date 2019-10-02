@@ -52,35 +52,41 @@ public class ExecuteScript{
 		if(PROPERTY_NAME_9.length()!=0) data.setProperty(PROPERTY_NAME_9, PROPERTY_VALUE_9);
 		if(PROPERTY_NAME_10.length()!=0) data.setProperty(PROPERTY_NAME_10, PROPERTY_VALUE_10);
 
-		GVBuffer prevData = new GVBuffer();
-		prevData.setObject(new String(Files.readAllBytes(Paths.get(ENVIRONMENT_1_FILE_BUFFER_NAME))));
-		if(ENV_PROPERTY_NAME_1.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_1, ENV_PROPERTY_VALUE_1);
-		if(ENV_PROPERTY_NAME_2.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_2, ENV_PROPERTY_VALUE_2);
-		if(ENV_PROPERTY_NAME_3.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_3, ENV_PROPERTY_VALUE_3);
-		if(ENV_PROPERTY_NAME_4.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_4, ENV_PROPERTY_VALUE_4);
-		if(ENV_PROPERTY_NAME_5.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_5, ENV_PROPERTY_VALUE_5);
-		if(ENV_PROPERTY_NAME_6.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_6, ENV_PROPERTY_VALUE_6);
-		environment.put(ENVIRONMENT_1_GVBUFFER_NAME,prevData);
+		if(ENVIRONMENT_1_GVBUFFER_NAME!=null&&!ENVIRONMENT_1_GVBUFFER_NAME.equals("")) {
+			GVBuffer prevData = new GVBuffer();
+			prevData.setObject(new String(Files.readAllBytes(Paths.get(ENVIRONMENT_1_FILE_BUFFER_NAME))));
+			if(ENV_PROPERTY_NAME_1.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_1, ENV_PROPERTY_VALUE_1);
+			if(ENV_PROPERTY_NAME_2.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_2, ENV_PROPERTY_VALUE_2);
+			if(ENV_PROPERTY_NAME_3.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_3, ENV_PROPERTY_VALUE_3);
+			if(ENV_PROPERTY_NAME_4.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_4, ENV_PROPERTY_VALUE_4);
+			if(ENV_PROPERTY_NAME_5.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_5, ENV_PROPERTY_VALUE_5);
+			if(ENV_PROPERTY_NAME_6.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_6, ENV_PROPERTY_VALUE_6);
+			environment.put(ENVIRONMENT_1_GVBUFFER_NAME,prevData);
+		}
 
-		GVBuffer prevData2 = new GVBuffer();
-		prevData2.setObject(new String(Files.readAllBytes(Paths.get(ENVIRONMENT_2_FILE_BUFFER_NAME))));
-		if(ENV_2_PROPERTY_NAME_1.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_1, ENV_2_PROPERTY_VALUE_1);
-		if(ENV_2_PROPERTY_NAME_2.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_2, ENV_2_PROPERTY_VALUE_2);
-		if(ENV_2_PROPERTY_NAME_3.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_3, ENV_2_PROPERTY_VALUE_3);
-		if(ENV_2_PROPERTY_NAME_4.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_4, ENV_2_PROPERTY_VALUE_4);
-		if(ENV_2_PROPERTY_NAME_5.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_5, ENV_2_PROPERTY_VALUE_5);
-		if(ENV_2_PROPERTY_NAME_6.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_6, ENV_2_PROPERTY_VALUE_6);
-		environment.put(ENVIRONMENT_2_GVBUFFER_NAME,prevData2);
-		
-		GVBuffer prevData3 = new GVBuffer();
-		prevData3.setObject(new String(Files.readAllBytes(Paths.get(ENVIRONMENT_3_FILE_BUFFER_NAME))));
-		if(ENV_3_PROPERTY_NAME_1.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_1, ENV_3_PROPERTY_VALUE_1);
-		if(ENV_3_PROPERTY_NAME_2.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_2, ENV_3_PROPERTY_VALUE_2);
-		if(ENV_3_PROPERTY_NAME_3.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_3, ENV_3_PROPERTY_VALUE_3);
-		if(ENV_3_PROPERTY_NAME_4.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_4, ENV_3_PROPERTY_VALUE_4);
-		if(ENV_3_PROPERTY_NAME_5.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_5, ENV_3_PROPERTY_VALUE_5);
-		if(ENV_3_PROPERTY_NAME_6.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_6, ENV_3_PROPERTY_VALUE_6);
-		environment.put(ENVIRONMENT_3_GVBUFFER_NAME,prevData3);
+		if(ENVIRONMENT_2_GVBUFFER_NAME!=null&&!ENVIRONMENT_2_GVBUFFER_NAME.equals("")) {
+			GVBuffer prevData2 = new GVBuffer();
+			prevData2.setObject(new String(Files.readAllBytes(Paths.get(ENVIRONMENT_2_FILE_BUFFER_NAME))));
+			if(ENV_2_PROPERTY_NAME_1.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_1, ENV_2_PROPERTY_VALUE_1);
+			if(ENV_2_PROPERTY_NAME_2.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_2, ENV_2_PROPERTY_VALUE_2);
+			if(ENV_2_PROPERTY_NAME_3.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_3, ENV_2_PROPERTY_VALUE_3);
+			if(ENV_2_PROPERTY_NAME_4.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_4, ENV_2_PROPERTY_VALUE_4);
+			if(ENV_2_PROPERTY_NAME_5.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_5, ENV_2_PROPERTY_VALUE_5);
+			if(ENV_2_PROPERTY_NAME_6.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_6, ENV_2_PROPERTY_VALUE_6);
+			environment.put(ENVIRONMENT_2_GVBUFFER_NAME,prevData2);
+		}
+
+		if(ENVIRONMENT_3_GVBUFFER_NAME!=null&&!ENVIRONMENT_3_GVBUFFER_NAME.equals("")) {
+			GVBuffer prevData3 = new GVBuffer();
+			prevData3.setObject(new String(Files.readAllBytes(Paths.get(ENVIRONMENT_3_FILE_BUFFER_NAME))));
+			if(ENV_3_PROPERTY_NAME_1.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_1, ENV_3_PROPERTY_VALUE_1);
+			if(ENV_3_PROPERTY_NAME_2.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_2, ENV_3_PROPERTY_VALUE_2);
+			if(ENV_3_PROPERTY_NAME_3.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_3, ENV_3_PROPERTY_VALUE_3);
+			if(ENV_3_PROPERTY_NAME_4.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_4, ENV_3_PROPERTY_VALUE_4);
+			if(ENV_3_PROPERTY_NAME_5.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_5, ENV_3_PROPERTY_VALUE_5);
+			if(ENV_3_PROPERTY_NAME_6.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_6, ENV_3_PROPERTY_VALUE_6);
+			environment.put(ENVIRONMENT_3_GVBUFFER_NAME,prevData3);
+		}
 	}
 
 	private static boolean executeTest(GVBuffer data, HashMap<String,GVBuffer> environment) throws Exception {
