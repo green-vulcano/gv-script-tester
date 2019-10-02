@@ -11,21 +11,21 @@ The installation is very simple, just clone ***gv-script-tester***, open the pro
 
 ### How to use
 
-To run a ***Javascript script***, write into *JavaScript.js* the script that you want to execute and set *IS_JAVASCRIPT* constant as *true* in *Constants.java*. (Try to run example 1: Javascript)
+To run a ***Javascript script***, write into *JavaScript.js* the script that you want to execute and set *IS_JAVASCRIPT = true* in *Constants.java*. (Try to run example 1: Javascript)
 
 ```
 JavaScript body         ->  /scriptTester/ [JavaScript.js]
 Javascript abilitation  ->  /src/tester/settings/ [Constants.java]
 ```
 
-To run a ***Groovy script***, insert the script into the appropriate area in *GroovyScript.java* and set *IS_JAVASCRIPT* constant as *false*. (Try to run example 2 - Groovy script)
+To run a ***Groovy script***, insert the script into the appropriate area in *GroovyScript.java* and set *IS_JAVASCRIPT = false*. (Try to run example 2 - Groovy script)
 
 ```
 Groovy Script body      ->  /src/tester/groovy/ [GroovyScript.java]
 Groovy abilitation      ->  /src/tester/settings/ [Constants.java]
 ```
 
-    Note: If your script is a function with a boolean return, set ***IS_CONDITION*** constants as **true**. 
+    Note: If your script is a function with a boolean return, set IS_CONDITION = true 
     (Try to run example 3 - Groovy script with boolean return)
 
 To edit current (input) ***GVBuffer*** object, you have to edit the file *DATA-GVBuffer.txt*. If you need to add/modify properties of the current GVBuffer, you have to edit the file *Constants.java*.
