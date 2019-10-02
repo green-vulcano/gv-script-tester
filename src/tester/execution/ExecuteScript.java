@@ -51,6 +51,8 @@ public class ExecuteScript{
 		if(PROPERTY_NAME_8.length()!=0) data.setProperty(PROPERTY_NAME_8, PROPERTY_VALUE_8);
 		if(PROPERTY_NAME_9.length()!=0) data.setProperty(PROPERTY_NAME_9, PROPERTY_VALUE_9);
 		if(PROPERTY_NAME_10.length()!=0) data.setProperty(PROPERTY_NAME_10, PROPERTY_VALUE_10);
+		if(PROPERTY_NAME_11.length()!=0) data.setProperty(PROPERTY_NAME_11, PROPERTY_VALUE_11);
+		if(PROPERTY_NAME_12.length()!=0) data.setProperty(PROPERTY_NAME_12, PROPERTY_VALUE_12);
 
 		if(ENVIRONMENT_1_GVBUFFER_NAME!=null&&!ENVIRONMENT_1_GVBUFFER_NAME.equals("")) {
 			GVBuffer prevData = new GVBuffer();
@@ -61,6 +63,8 @@ public class ExecuteScript{
 			if(ENV_PROPERTY_NAME_4.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_4, ENV_PROPERTY_VALUE_4);
 			if(ENV_PROPERTY_NAME_5.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_5, ENV_PROPERTY_VALUE_5);
 			if(ENV_PROPERTY_NAME_6.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_6, ENV_PROPERTY_VALUE_6);
+			if(ENV_PROPERTY_NAME_7.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_7, ENV_PROPERTY_VALUE_7);
+			if(ENV_PROPERTY_NAME_8.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_8, ENV_PROPERTY_VALUE_8);
 			environment.put(ENVIRONMENT_1_GVBUFFER_NAME,prevData);
 		}
 
@@ -73,6 +77,8 @@ public class ExecuteScript{
 			if(ENV_2_PROPERTY_NAME_4.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_4, ENV_2_PROPERTY_VALUE_4);
 			if(ENV_2_PROPERTY_NAME_5.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_5, ENV_2_PROPERTY_VALUE_5);
 			if(ENV_2_PROPERTY_NAME_6.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_6, ENV_2_PROPERTY_VALUE_6);
+			if(ENV_2_PROPERTY_NAME_7.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_7, ENV_2_PROPERTY_VALUE_7);
+			if(ENV_2_PROPERTY_NAME_8.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_8, ENV_2_PROPERTY_VALUE_8);
 			environment.put(ENVIRONMENT_2_GVBUFFER_NAME,prevData2);
 		}
 
@@ -85,6 +91,8 @@ public class ExecuteScript{
 			if(ENV_3_PROPERTY_NAME_4.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_4, ENV_3_PROPERTY_VALUE_4);
 			if(ENV_3_PROPERTY_NAME_5.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_5, ENV_3_PROPERTY_VALUE_5);
 			if(ENV_3_PROPERTY_NAME_6.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_6, ENV_3_PROPERTY_VALUE_6);
+			if(ENV_3_PROPERTY_NAME_7.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_7, ENV_3_PROPERTY_VALUE_7);
+			if(ENV_3_PROPERTY_NAME_8.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_8, ENV_3_PROPERTY_VALUE_8);
 			environment.put(ENVIRONMENT_3_GVBUFFER_NAME,prevData3);
 		}
 	}
