@@ -1,0 +1,17 @@
+{
+	"bufferName": "data",
+	"properties": [
+		{
+			"name": "FIRST_NAME",
+			"value": "Gino"
+		},
+		{
+			"name": "LAST_NAME",
+			"value": "Ginotti"
+		},
+		{
+			"name": "PRIVATE_CAR_PLATE",
+			"value": "AD123CD"
+		}
+	]
+}
