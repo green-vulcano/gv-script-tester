@@ -36,7 +36,7 @@ public class ExecuteScript{
 				System.out.println("> Returned value = " + conditionReturn);
 			}
 		} catch (Exception e) {
-			String error = "> SCRIPT EXECUTION ERROR! \n> Error: ";
+			String error = "> SCRIPT EXECUTION ERROR!\n> Error: ";
 			System.out.print(error);
 			e.printStackTrace(); 
 			Files.write(Paths.get(LOG_FILE_PATH), (error + e.getMessage()).getBytes(), StandardOpenOption.APPEND);
@@ -120,7 +120,7 @@ public class ExecuteScript{
 		if(IS_FUNCTION) {
 			function = " function";
 		}
-		String message = "         SCRIPT EXECUTION (" + lang + function + ") \n \n";
+		String message = "         SCRIPT EXECUTION (" + lang + function + ")\n\n";
 		System.out.print(message);
 		Files.write(Paths.get(LOG_FILE_PATH), (message).getBytes(), StandardOpenOption.APPEND);
 		GroovyScript gs = null;
@@ -164,7 +164,7 @@ public class ExecuteScript{
 
 	public static String generateBufferInfo(GVBuffer gvbuffer, String bufferName) {
 		String output = "";
-		output += "---------------- GV BUFFER -------------------- \n";
+		output += "---------------- GV BUFFER --------------------\n";
 		output += "\n";
 		if(bufferName!=null) {
 			output += "> Name = " + bufferName + "\n";
@@ -172,7 +172,7 @@ public class ExecuteScript{
 		}
 		String bufferObject = (String) gvbuffer.getObject();
 		if(bufferObject!=null && bufferObject.contains("\n")) {
-			output += "> Object (multiline view): \n" + bufferObject + "\n";
+			output += "> Object (multiline view):\n" + bufferObject + "\n";
 		} else {
 			String info = null;
 			if(bufferObject==null) {
@@ -195,13 +195,13 @@ public class ExecuteScript{
 			for(String key:gvbuffer.getPropertyNames()) {
 				String propertyValue = gvbuffer.getProperty(key);
 				if(propertyValue!=null && propertyValue.contains("\n")) {
-					output += "    > " + key + " (multiline view): \n" + propertyValue + "\n";
+					output += "    > " + key + " (multiline view):\n" + propertyValue + "\n";
 				} else {
 					output += "    > " + key + " = " + propertyValue + "\n";
 				}
 			}
 		}
-		output += "-----------------------------------------------" + "\n \n";
+		output += "-----------------------------------------------" + "\n\n";
 		return output;
 	}
 
