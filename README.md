@@ -74,6 +74,34 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	data.setObject("Car not found!")
 }
 ```
+Data buffer object:
+```
+{
+"plate":"AD123CD",
+"color":"red"
+}
+```
+Data buffer properties:
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "properties.dtd">
+<buffer name="data">
+	<propertyList>
+		<property>
+			<name>FIRST_NAME</name>
+			<value><![CDATA[Gino]]></value>
+		</property>
+		<property>
+			<name>LAST_NAME</name>
+			<value><![CDATA[Ginotti]]></value>
+		</property>
+		<property>
+			<name>PRIVATE_CAR_PLATE</name>
+			<value><![CDATA[AD123CD]]></value>
+		</property>
+	</propertyList>
+</buffer>
+```
 Execution output:
 ```
 ---------------- GV BUFFER -------------------- 
