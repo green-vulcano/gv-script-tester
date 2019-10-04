@@ -28,25 +28,27 @@ Groovy abilitation      ->  /src/tester/settings/ [Constants.java]
     Note: If your script is a function with a boolean return, set IS_CONDITION = true 
     (Try to run example 3 - Groovy script with boolean return)
 
-To edit current (input) ***GVBuffer*** object, you have to edit the file *DATA-GVBuffer.txt*. If you need to add/modify properties of the current GVBuffer, you have to edit the file *Constants.java*.
+To edit current (input) ***GVBuffer*** object, you have to edit the file *DATA-GVBuffer.txt*. If you need to add/modify properties of the current GVBuffer, you have to edit the file *DATA-Properties.xml*.
 
 ```
 Current buffer content      ->  /scriptTester/ [DATA-GVBuffer.txt]
-Current buffer properties   ->  /src/tester/settings/ [Constants.java]
+Current buffer properties   ->  /scriptTester/ [DATA-Properties.xml]
 ```
 
-To add an ***additional buffer***, use *ENV-X-GVBuffer.txt* file for the buffer object and setup buffer name and its properties in Constants.java (remind that gvbuffers with non name will be ignored by the GV Script Tester). You can use up to 3 additional GVBuffers, the changes of additional GVBuffers during the execution are showed in the file *environmentLog.txt*.
+To add an ***additional buffer***, you have to add an additional *ENV-1-GVBuffer.txt* and *ENV-X-Properties.xml* file for the buffer object and the related properties. The changes of additional GVBuffers during the execution are showed in the file *environmentLog.txt*.
 
 ```
-Current buffer              ->  /scriptTester/ [DATA-GVBuffer.txt]
-Additional buffer 1 object  ->  /scriptTester/ [ENV-1-GVBuffer.txt]
-Additional buffer 2 object  ->  /scriptTester/ [ENV-2-GVBuffer.txt]
-Additional buffer 3 object  ->  /scriptTester/ [ENV-3-GVBuffer.txt]
-Environment buffers log     ->  /scriptTester/ [environmentLog.txt]
-Buffers properties          ->  /src/tester/settings/ [Constants.java]
+Current buffer object         ->  /scriptTester/ [DATA-GVBuffer.txt]
+Current buffer properties     ->  /scriptTester/ [DATA-Properties.xml]
+Additional buffer object      ->  /scriptTester/ [ENV-1-GVBuffer.txt]
+Additional buffer properties  ->  /scriptTester/ [ENV-1-Properties.xml]
+Additional buffer object      ->  /scriptTester/ [ENV-2-GVBuffer.txt]
+Additional buffer properties  ->  /scriptTester/ [ENV-2-Properties.xml]
+           . . .
+Environment buffers log       ->  /scriptTester/ [environmentLog.txt]
 ```
 
-To edit miscellaneous ***GV-SriptTester options*** and set up ***properties*** or ***buffers settings***, edit the file *Constants.java*.
+To edit execution ***GV-SriptTester*** settings, edit the file *Constants.java*.
 
 ```
 GV-SriptTester settings     ->  /src/tester/settings/ [Constants.java]
