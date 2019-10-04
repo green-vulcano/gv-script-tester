@@ -5,7 +5,7 @@
   xmlns CDATA #FIXED ''
   name NMTOKEN #REQUIRED>
 
-<!ELEMENT propertyList (property)+>
+<!ELEMENT propertyList (property)*>
 <!ATTLIST propertyList
   xmlns CDATA #FIXED ''>
 

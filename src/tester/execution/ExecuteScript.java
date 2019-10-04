@@ -167,14 +167,24 @@ public class ExecuteScript{
 		output += "---------------- GV BUFFER -------------------- \n";
 		output += "\n";
 		if(bufferName!=null) {
-			output += "> GVBuffer name = " + bufferName + "\n";
+			output += "> Name = " + bufferName + "\n";
 			output += "\n";
 		}
 		String bufferObject = (String) gvbuffer.getObject();
 		if(bufferObject!=null && bufferObject.contains("\n")) {
-			output += "> GVBuffer (multiline view): \n" + bufferObject + "\n";
+			output += "> Object (multiline view): \n" + bufferObject + "\n";
 		} else {
-			output += "> GVBuffer = " + bufferObject + "\n";
+			String info = null;
+			if(bufferObject==null) {
+				info = "is null";
+			} else if (bufferObject.equals("")){
+				info = "is empty";
+			}
+			if(info==null) {
+				output += "> Object = " + bufferObject + "\n";
+			} else {
+				output += "> Object " + info + "\n";
+			}	
 		}
 		output += "\n";
 

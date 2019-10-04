@@ -2,9 +2,5 @@
 <!DOCTYPE note SYSTEM "properties.dtd">
 <buffer name="test-2">
 	<propertyList>
-		<property>
-			<name>CITY</name>
-			<value><![CDATA[Rome]]></value>
-		</property>
 	</propertyList>
 </buffer>
