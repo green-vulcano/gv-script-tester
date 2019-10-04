@@ -35,7 +35,7 @@ Current buffer content      ->  /scriptTester/ [DATA-GVBuffer.txt]
 Current buffer properties   ->  /scriptTester/ [DATA-Properties.xml]
 ```
 
-To add an ***additional buffer***, you have to add an additional *ENV-1-GVBuffer.txt* and *ENV-X-Properties.xml* file for the buffer object and the related properties. The changes of additional GVBuffers during the execution are showed in the file *environmentLog.txt*.
+To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-GVBuffer.txt* and *ENV-[buffer number]-Properties.xml* file for the buffer object and the related properties. The changes of additional GVBuffers during the execution are showed in the file *environmentLog.txt*.
 
 ```
 Current buffer object         ->  /scriptTester/ [DATA-GVBuffer.txt]
