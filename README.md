@@ -44,7 +44,7 @@ Additional buffer object      ->  /scriptTester/ [ENV-1-GVBuffer.txt]
 Additional buffer properties  ->  /scriptTester/ [ENV-1-Properties.xml]
 Additional buffer object      ->  /scriptTester/ [ENV-2-GVBuffer.txt]
 Additional buffer properties  ->  /scriptTester/ [ENV-2-Properties.xml]
-           . . .
+           . . .                             . . .
 Environment buffers log       ->  /scriptTester/ [environmentLog.txt]
 ```
 
