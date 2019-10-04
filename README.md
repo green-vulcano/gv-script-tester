@@ -78,7 +78,7 @@ Execution output:
 ```
 ---------------- GV BUFFER -------------------- 
 
-> GVBuffer (multiline view): 
+> Object (multiline view): 
 {
 "plate":"AD123CD",
 "color":"red"
@@ -94,7 +94,7 @@ Execution output:
  
 ---------------- GV BUFFER -------------------- 
 
-> GVBuffer = Gino Ginotti's car is red!
+> Object = Gino Ginotti's car is red!
 
 > Properties:
     > FIRST_NAME = Gino
