@@ -1,0 +1,22 @@
+<?xml encoding="UTF-8"?>
+
+<!ELEMENT buffer (propertyList)>
+<!ATTLIST buffer
+  xmlns CDATA #FIXED ''
+  name NMTOKEN #REQUIRED>
+
+<!ELEMENT propertyList (property)+>
+<!ATTLIST propertyList
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT property (name,value)>
+<!ATTLIST property
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT name (#PCDATA)>
+<!ATTLIST name
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT value (#PCDATA)>
+<!ATTLIST value
+  xmlns CDATA #FIXED ''>

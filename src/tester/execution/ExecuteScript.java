@@ -1,24 +1,30 @@
 package tester.execution;
 
-import static tester.execution.Paths.*;
-import static tester.settings.Constants.*;
+import static tester.execution.Paths.GV_DATA_BUFFER_PROPERTIES_NAME;
+import static tester.execution.Paths.GV_FILE_BUFFER_NAME;
+import static tester.execution.Paths.LOG_FILE_PATH;
+import static tester.settings.Constants.IS_FUNCTION;
+import static tester.settings.Constants.IS_JAVASCRIPT;
 
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
 
-import org.json.JSONObject;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
 
 import it.greenvulcano.gvesb.buffer.GVBuffer;
 import it.greenvulcano.gvesb.buffer.GVException;
+import tester.execution.mapping.Buffer;
+import tester.execution.mapping.Property;
 import tester.groovy.GroovyScript;
 
 public class ExecuteScript{
 
-	public static void main(String[] args) throws GVException, IOException {
+	public static void main(String[] args) throws Exception {
 		GVBuffer data = new GVBuffer();
 		HashMap<String,GVBuffer> environment = new HashMap<String,GVBuffer>();
 		Files.write(Paths.get(LOG_FILE_PATH), "".getBytes());
@@ -45,7 +51,13 @@ public class ExecuteScript{
 
 		String objectPath = GV_FILE_BUFFER_NAME;
 		String propertyPath = GV_DATA_BUFFER_PROPERTIES_NAME;
-		readBufferFromFile(data, objectPath, propertyPath);
+
+		try {
+			readBufferFromFile(data, objectPath, propertyPath);
+		} catch (Exception e1) {
+			System.out.println("ERROR: unable to initialize 'data' gvbuffer");
+			e1.printStackTrace();
+		}
 
 		boolean bufferFileExists = true;
 		int count = 1;
@@ -58,7 +70,7 @@ public class ExecuteScript{
 				if (bufferName != null && !bufferName.equals("")) {
 					environment.put(bufferName,envBuffer);
 				}
-			} catch (IOException e) {
+			} catch (Exception e) {
 				bufferFileExists = false;
 			}
 			count++;
@@ -67,93 +79,32 @@ public class ExecuteScript{
 	}
 
 	private static String readBufferFromFile(GVBuffer gvbuffer, String objectPath, String propertyPath)
-			throws GVException, IOException {
+			throws Exception {
 
 		gvbuffer.setObject(new String(Files.readAllBytes(Paths.get(objectPath))));
-		String fileContent = new String(Files.readAllBytes(Paths.get(propertyPath)));
-		JSONObject json = null;
+
+		File source = new File(propertyPath);
+		JAXBContext jaxbContext = JAXBContext.newInstance(Buffer.class);
+		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+		System.setProperty("javax.xml.accessExternalDTD", "all"); 
+		Buffer element = (Buffer) jaxbUnmarshaller.unmarshal(source);
+
 		try {
-			json = new JSONObject(fileContent);
-			if(!json.has("bufferName")) {
+			if(element.getName()==null) {
 				System.out.println("ERROR: missing mandatory field 'bufferName' in " + propertyPath);
 				return null;
 			}
-			if(json.has("properties")) {
-				for(Object obj : json.getJSONArray("properties")) {
-					JSONObject propertyPair = (JSONObject) obj;
-					gvbuffer.setProperty(propertyPair.getString("name"), propertyPair.getString("value"));
-				}
-			} else {
-				System.out.println("ERROR: missing mandatory field 'properties' in " + propertyPath);
+			for(Property propertyPair : element.getPropertyList().getProperty()) {
+				gvbuffer.setProperty(propertyPair.getName().getvalue(), propertyPair.getValue().getvalue());
 			}
+
 		} catch (Exception e) {
 			System.out.println("ERROR: unable to read gv-script-tester configuration file: " + propertyPath);
 			e.printStackTrace();
 		}
 
-		return json.getString("bufferName");
+		return element.getName();
 
-	}
-
-	private static void initializeTest_old(GVBuffer data, HashMap<String,GVBuffer> environment) throws GVException, IOException {
-
-		////////////////////////////////
-
-		data.setObject(new String(Files.readAllBytes(Paths.get(GV_FILE_BUFFER_NAME))));
-		if(PROPERTY_NAME_1.length()!=0) data.setProperty(PROPERTY_NAME_1, PROPERTY_VALUE_1);
-		if(PROPERTY_NAME_2.length()!=0) data.setProperty(PROPERTY_NAME_2, PROPERTY_VALUE_2);
-		if(PROPERTY_NAME_3.length()!=0) data.setProperty(PROPERTY_NAME_3, PROPERTY_VALUE_3);
-		if(PROPERTY_NAME_4.length()!=0) data.setProperty(PROPERTY_NAME_4, PROPERTY_VALUE_4);
-		if(PROPERTY_NAME_5.length()!=0) data.setProperty(PROPERTY_NAME_5, PROPERTY_VALUE_5);
-		if(PROPERTY_NAME_6.length()!=0) data.setProperty(PROPERTY_NAME_6, PROPERTY_VALUE_6);
-		if(PROPERTY_NAME_7.length()!=0) data.setProperty(PROPERTY_NAME_7, PROPERTY_VALUE_7);
-		if(PROPERTY_NAME_8.length()!=0) data.setProperty(PROPERTY_NAME_8, PROPERTY_VALUE_8);
-		if(PROPERTY_NAME_9.length()!=0) data.setProperty(PROPERTY_NAME_9, PROPERTY_VALUE_9);
-		if(PROPERTY_NAME_10.length()!=0) data.setProperty(PROPERTY_NAME_10, PROPERTY_VALUE_10);
-		if(PROPERTY_NAME_11.length()!=0) data.setProperty(PROPERTY_NAME_11, PROPERTY_VALUE_11);
-		if(PROPERTY_NAME_12.length()!=0) data.setProperty(PROPERTY_NAME_12, PROPERTY_VALUE_12);
-
-		if(ENVIRONMENT_1_GVBUFFER_NAME!=null&&!ENVIRONMENT_1_GVBUFFER_NAME.equals("")) {
-			GVBuffer prevData = new GVBuffer();
-			prevData.setObject(new String(Files.readAllBytes(Paths.get(ENVIRONMENT_1_FILE_BUFFER_NAME))));
-			if(ENV_PROPERTY_NAME_1.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_1, ENV_PROPERTY_VALUE_1);
-			if(ENV_PROPERTY_NAME_2.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_2, ENV_PROPERTY_VALUE_2);
-			if(ENV_PROPERTY_NAME_3.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_3, ENV_PROPERTY_VALUE_3);
-			if(ENV_PROPERTY_NAME_4.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_4, ENV_PROPERTY_VALUE_4);
-			if(ENV_PROPERTY_NAME_5.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_5, ENV_PROPERTY_VALUE_5);
-			if(ENV_PROPERTY_NAME_6.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_6, ENV_PROPERTY_VALUE_6);
-			if(ENV_PROPERTY_NAME_7.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_7, ENV_PROPERTY_VALUE_7);
-			if(ENV_PROPERTY_NAME_8.length()!=0) prevData.setProperty(ENV_PROPERTY_NAME_8, ENV_PROPERTY_VALUE_8);
-			environment.put(ENVIRONMENT_1_GVBUFFER_NAME,prevData);
-		}
-
-		if(ENVIRONMENT_2_GVBUFFER_NAME!=null&&!ENVIRONMENT_2_GVBUFFER_NAME.equals("")) {
-			GVBuffer prevData2 = new GVBuffer();
-			prevData2.setObject(new String(Files.readAllBytes(Paths.get(ENVIRONMENT_2_FILE_BUFFER_NAME))));
-			if(ENV_2_PROPERTY_NAME_1.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_1, ENV_2_PROPERTY_VALUE_1);
-			if(ENV_2_PROPERTY_NAME_2.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_2, ENV_2_PROPERTY_VALUE_2);
-			if(ENV_2_PROPERTY_NAME_3.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_3, ENV_2_PROPERTY_VALUE_3);
-			if(ENV_2_PROPERTY_NAME_4.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_4, ENV_2_PROPERTY_VALUE_4);
-			if(ENV_2_PROPERTY_NAME_5.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_5, ENV_2_PROPERTY_VALUE_5);
-			if(ENV_2_PROPERTY_NAME_6.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_6, ENV_2_PROPERTY_VALUE_6);
-			if(ENV_2_PROPERTY_NAME_7.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_7, ENV_2_PROPERTY_VALUE_7);
-			if(ENV_2_PROPERTY_NAME_8.length()!=0) prevData2.setProperty(ENV_2_PROPERTY_NAME_8, ENV_2_PROPERTY_VALUE_8);
-			environment.put(ENVIRONMENT_2_GVBUFFER_NAME,prevData2);
-		}
-
-		if(ENVIRONMENT_3_GVBUFFER_NAME!=null&&!ENVIRONMENT_3_GVBUFFER_NAME.equals("")) {
-			GVBuffer prevData3 = new GVBuffer();
-			prevData3.setObject(new String(Files.readAllBytes(Paths.get(ENVIRONMENT_3_FILE_BUFFER_NAME))));
-			if(ENV_3_PROPERTY_NAME_1.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_1, ENV_3_PROPERTY_VALUE_1);
-			if(ENV_3_PROPERTY_NAME_2.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_2, ENV_3_PROPERTY_VALUE_2);
-			if(ENV_3_PROPERTY_NAME_3.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_3, ENV_3_PROPERTY_VALUE_3);
-			if(ENV_3_PROPERTY_NAME_4.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_4, ENV_3_PROPERTY_VALUE_4);
-			if(ENV_3_PROPERTY_NAME_5.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_5, ENV_3_PROPERTY_VALUE_5);
-			if(ENV_3_PROPERTY_NAME_6.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_6, ENV_3_PROPERTY_VALUE_6);
-			if(ENV_3_PROPERTY_NAME_7.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_7, ENV_3_PROPERTY_VALUE_7);
-			if(ENV_3_PROPERTY_NAME_8.length()!=0) prevData3.setProperty(ENV_3_PROPERTY_NAME_8, ENV_3_PROPERTY_VALUE_8);
-			environment.put(ENVIRONMENT_3_GVBUFFER_NAME,prevData3);
-		}
 	}
 
 	private static boolean executeTest(GVBuffer data, HashMap<String,GVBuffer> environment) throws Exception {

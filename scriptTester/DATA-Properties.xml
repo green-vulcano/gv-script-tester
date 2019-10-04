@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "properties.dtd">
+<buffer name="data">
+	<propertyList>
+		<property>
+			<name>FIRST_NAME</name>
+			<value><![CDATA[Gino]]></value>
+		</property>
+		<property>
+			<name>LAST_NAME</name>
+			<value><![CDATA[Ginotti]]></value>
+		</property>
+		<property>
+			<name>PRIVATE_CAR_PLATE</name>
+			<value><![CDATA[AD123CD]]></value>
+		</property>
+	</propertyList>
+</buffer>
