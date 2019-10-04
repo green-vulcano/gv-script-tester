@@ -14,15 +14,15 @@ The installation is very simple, just clone ***gv-script-tester***, open the pro
 To run a ***Javascript script***, write into *JavaScript.js* the script that you want to execute and set *IS_JAVASCRIPT = true* in *Constants.java*. (Try to run example 1: Javascript)
 
 ```
-JavaScript body         ->  /scriptTester/ [JavaScript.js]
-Javascript abilitation  ->  /src/tester/settings/ [Constants.java]
+JavaScript body         ->  scriptTester/ [JavaScript.js]
+Javascript abilitation  ->  src/tester/settings/ [Constants.java]
 ```
 
 To run a ***Groovy script***, insert the script into the appropriate area in *GroovyScript.java* and set *IS_JAVASCRIPT = false*. (Try to run example 2 - Groovy script)
 
 ```
-Groovy Script body      ->  /src/tester/groovy/ [GroovyScript.java]
-Groovy abilitation      ->  /src/tester/settings/ [Constants.java]
+Groovy Script body      ->  src/tester/groovy/ [GroovyScript.java]
+Groovy abilitation      ->  src/tester/settings/ [Constants.java]
 ```
 
     Note: If your script is a function with a boolean return, set IS_CONDITION = true 
@@ -31,32 +31,32 @@ Groovy abilitation      ->  /src/tester/settings/ [Constants.java]
 To edit current (input) ***GVBuffer*** object, you have to edit the file *DATA-GVBuffer.txt*. If you need to add/modify properties of the current GVBuffer, you have to edit the file *DATA-Properties.xml*.
 
 ```
-Current buffer content      ->  /scriptTester/ [DATA-GVBuffer.txt]
-Current buffer properties   ->  /scriptTester/ [DATA-Properties.xml]
+Current buffer content      ->  scriptTester/ [DATA-GVBuffer.txt]
+Current buffer properties   ->  scriptTester/ [DATA-Properties.xml]
 ```
 
 To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-GVBuffer.txt* and *ENV-[buffer number]-Properties.xml* file for the buffer object and the related properties. The changes of additional GVBuffers during the execution are showed in the file *environmentLog.txt*.
 
 ```
-Current buffer object         ->  /scriptTester/ [DATA-GVBuffer.txt]
-Current buffer properties     ->  /scriptTester/ [DATA-Properties.xml]
-Additional buffer object      ->  /scriptTester/ [ENV-1-GVBuffer.txt]
-Additional buffer properties  ->  /scriptTester/ [ENV-1-Properties.xml]
-Additional buffer object      ->  /scriptTester/ [ENV-2-GVBuffer.txt]
-Additional buffer properties  ->  /scriptTester/ [ENV-2-Properties.xml]
+Current buffer object         ->  scriptTester/ [DATA-GVBuffer.txt]
+Current buffer properties     ->  scriptTester/ [DATA-Properties.xml]
+Additional buffer object      ->  scriptTester/ [ENV-1-GVBuffer.txt]
+Additional buffer properties  ->  scriptTester/ [ENV-1-Properties.xml]
+Additional buffer object      ->  scriptTester/ [ENV-2-GVBuffer.txt]
+Additional buffer properties  ->  scriptTester/ [ENV-2-Properties.xml]
            . . .                             . . .
-Environment buffers log       ->  /scriptTester/ [environmentLog.txt]
+Environment buffers log       ->  scriptTester/ [environmentLog.txt]
 ```
 
 To edit execution ***GV-SriptTester*** settings, edit the file *Constants.java*.
 
 ```
-GV-SriptTester settings     ->  /src/tester/settings/ [Constants.java]
+GV-SriptTester settings     ->  src/tester/settings/ [Constants.java]
 ```
 
 ### Examples
 #### Example 1: Javascript
-Script:
+Script (scriptTester/JavaScript.js):
 ```
 // example 1: Javascript
 
@@ -74,14 +74,14 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	data.setObject("Car not found!")
 }
 ```
-Data buffer object:
+Data buffer object (scriptTester/DATA-GVBuffer.txt):
 ```
 {
 "plate":"AD123CD",
 "color":"red"
 }
 ```
-Data buffer properties:
+Data buffer properties (scriptTester/DATA-Properties.xml):
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE note SYSTEM "properties.dtd">
