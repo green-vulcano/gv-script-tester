@@ -56,7 +56,7 @@ GV-SriptTester settings     ->  src/tester/settings/ [Constants.java]
 
 ### Examples
 #### Example 1: Javascript
-Script (scriptTester/JavaScript.js):
+Script (*scriptTester/JavaScript.js*):
 ```
 // example 1: Javascript
 
@@ -74,14 +74,14 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	data.setObject("Car not found!")
 }
 ```
-Data buffer object (scriptTester/DATA-GVBuffer.txt):
+Data buffer object (*scriptTester/DATA-GVBuffer.txt*):
 ```
 {
 "plate":"AD123CD",
 "color":"red"
 }
 ```
-Data buffer properties (scriptTester/DATA-Properties.xml):
+Data buffer properties (*scriptTester/DATA-Properties.xml*):
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE note SYSTEM "properties.dtd">
