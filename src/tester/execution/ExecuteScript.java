@@ -1,8 +1,6 @@
 package tester.execution;
 
-import static tester.execution.Paths.GV_DATA_BUFFER_PROPERTIES_NAME;
-import static tester.execution.Paths.GV_FILE_BUFFER_NAME;
-import static tester.execution.Paths.LOG_FILE_PATH;
+import static tester.execution.Paths.*;
 import static tester.settings.Constants.IS_FUNCTION;
 import static tester.settings.Constants.IS_JAVASCRIPT;
 
@@ -63,8 +61,8 @@ public class ExecuteScript{
 		int count = 1;
 		while(bufferFileExists) {
 			try {
-				String envObjectPath = "scriptTester/ENV-" + count + "-GVBuffer.txt";
-				String envPropertiesPath = "scriptTester/ENV-" + count + "-Properties.json";
+				String envObjectPath = ENV_OBJECT_PATH_FIRST_PART + count + ENV_OBJECT_PATH_LAST_PART;
+				String envPropertiesPath = ENV_PROPERTIES_PATH_FIRST_PART + count + ENV_PROPERTIES_PATH_LAST_PART;
 				GVBuffer envBuffer = new GVBuffer();
 				String bufferName = readBufferFromFile(envBuffer, envObjectPath, envPropertiesPath);
 				if (bufferName != null && !bufferName.equals("")) {

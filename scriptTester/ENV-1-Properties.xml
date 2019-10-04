@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "properties.dtd">
 <buffer name="test">
-   <property name="TAX"><![CDATA[10]]></property>
+	<propertyList>
+		<property>
+			<name>TAX</name>
+			<value><![CDATA[10]]></value>
+		</property>
+	</propertyList>
 </buffer>

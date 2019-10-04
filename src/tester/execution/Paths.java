@@ -8,5 +8,9 @@ public interface Paths {
 	public static final String LOG_FILE_PATH = "scriptTester/environmentLog.txt";
 	public static final String GV_FILE_BUFFER_NAME = "scriptTester/DATA-GVBuffer.txt";
 	public static final String GV_DATA_BUFFER_PROPERTIES_NAME = "scriptTester/DATA-Properties.xml";
+	public static final String ENV_PROPERTIES_PATH_FIRST_PART = "scriptTester/ENV-";
+	public static final String ENV_PROPERTIES_PATH_LAST_PART = "-Properties.xml";
+	public static final String ENV_OBJECT_PATH_FIRST_PART = "scriptTester/ENV-";
+	public static final String ENV_OBJECT_PATH_LAST_PART = "-GVBuffer.txt";
 	
 }

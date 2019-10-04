@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<buffer name="test2">
-   <property name="prop-name-1"><![CDATA[prop body 1]]></property>
-   <property name="prop-name-2"><![CDATA[prop body 2]]></property>
+<!DOCTYPE note SYSTEM "properties.dtd">
+<buffer name="test-2">
+	<propertyList>
+		<property>
+			<name>CITY</name>
+			<value><![CDATA[Rome]]></value>
+		</property>
+	</propertyList>
 </buffer>
