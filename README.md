@@ -114,7 +114,7 @@ public void testScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<Strin
 	// example 2 - Groovy script
 	org.json.JSONObject inputJson = new org.json.JSONObject(data.getObject());
 	String city = inputJson.getString("city").toUpperCase();
-    data.setProperty("CITY", city);
+    	data.setProperty("CITY", city);
 
 	/////////////////////////////////////////////////////////////////////////////
 
