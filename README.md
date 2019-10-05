@@ -135,7 +135,7 @@ Have fun making these two examples work!
 
 ***Scripts:***
 ```
-public void testScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
+public void testGroovyScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
 
 	///////////////////////////////  SCRIPT AREA  ///////////////////////////////
 
@@ -148,7 +148,7 @@ public void testScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<Strin
 
 }
 
-public boolean testCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
+public boolean testGroovyCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
 
 	/////////////////////////// CONDITION SCRIPT AREA  ///////////////////////////
 
