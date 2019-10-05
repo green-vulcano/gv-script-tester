@@ -20,7 +20,7 @@ import tester.execution.mapping.Buffer;
 import tester.execution.mapping.Property;
 import tester.groovy.GroovyScript;
 
-public class ExecuteScript{
+public class GVScriptTester{
 
 	public static void main(String[] args) throws Exception {
 		GVBuffer data = new GVBuffer();
@@ -106,9 +106,9 @@ public class ExecuteScript{
 	}
 
 	private static boolean executeTest(GVBuffer data, HashMap<String,GVBuffer> environment) throws Exception {
-		printGVBuffer(data);
+		Visualizer.printGVBuffer(data);
 		for(String bufferName: environment.keySet()) {
-			writeInTheLog(environment.get(bufferName),bufferName);
+			Visualizer.writeInTheLog(environment.get(bufferName),bufferName);
 		}
 		String lang;
 		if(IS_JAVASCRIPT) {
@@ -124,17 +124,17 @@ public class ExecuteScript{
 		System.out.print(message);
 		Files.write(Paths.get(LOG_FILE_PATH), (message).getBytes(), StandardOpenOption.APPEND);
 		GroovyScript gs = null;
-		JavaScript javascript= null;
+		JavaScriptPerformer javascript= null;
 		boolean conditionReturn = false;
 		if(!IS_JAVASCRIPT) {
 			gs = new GroovyScript();
 			if(IS_FUNCTION) {
-				conditionReturn = gs.testCondition(data, environment);
+				conditionReturn = gs.testGroovyCondition(data, environment);
 			} else {
-				gs.testScript(data, environment);
+				gs.testGroovyScript(data, environment);
 			}
 		} else {
-			javascript = new JavaScript();
+			javascript = new JavaScriptPerformer();
 			if(IS_FUNCTION) {
 				conditionReturn = javascript.executeJavaScriptCondition(data, environment);
 			} else {
@@ -146,63 +146,11 @@ public class ExecuteScript{
 	}
 
 	private static void showScriptResults(GVBuffer data, HashMap<String, GVBuffer> environment) throws IOException {
-		printGVBuffer(data);	
+		Visualizer.printGVBuffer(data);	
 		for(String bufferName: environment.keySet()) {
-			writeInTheLog(environment.get(bufferName),bufferName);
+			Visualizer.writeInTheLog(environment.get(bufferName),bufferName);
 		}
-	}
-
-	public static void printGVBuffer(GVBuffer gvbuffer) {
-		String output = generateBufferInfo(gvbuffer, null);
-		System.out.print(output);
-	}
-
-	public static void writeInTheLog(GVBuffer gvbuffer, String bufferName) throws IOException {
-		String output = generateBufferInfo(gvbuffer, bufferName);
-		Files.write(Paths.get(LOG_FILE_PATH), output.getBytes(), StandardOpenOption.APPEND);
-	}
-
-	public static String generateBufferInfo(GVBuffer gvbuffer, String bufferName) {
-		String output = "";
-		output += "---------------- GV BUFFER --------------------\n";
-		output += "\n";
-		if(bufferName!=null) {
-			output += "> Name = " + bufferName + "\n";
-			output += "\n";
-		}
-		String bufferObject = (String) gvbuffer.getObject();
-		if(bufferObject!=null && bufferObject.contains("\n")) {
-			output += "> Object (multiline view):\n" + bufferObject + "\n";
-		} else {
-			String info = null;
-			if(bufferObject==null) {
-				info = "is null";
-			} else if (bufferObject.equals("")){
-				info = "is empty";
-			}
-			if(info==null) {
-				output += "> Object = " + bufferObject + "\n";
-			} else {
-				output += "> Object " + info + "\n";
-			}	
-		}
-		output += "\n";
-
-		if(gvbuffer.getPropertyNames().length<1) {
-			output += "> No Properties" + "\n";
-		} else {
-			output += "> Properties:" + "\n";
-			for(String key:gvbuffer.getPropertyNames()) {
-				String propertyValue = gvbuffer.getProperty(key);
-				if(propertyValue!=null && propertyValue.contains("\n")) {
-					output += "    > " + key + " (multiline view):\n" + propertyValue + "\n";
-				} else {
-					output += "    > " + key + " = " + propertyValue + "\n";
-				}
-			}
-		}
-		output += "-----------------------------------------------" + "\n\n";
-		return output;
+		
 	}
 
 }

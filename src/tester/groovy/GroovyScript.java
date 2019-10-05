@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class GroovyScript {
 
-	public void testScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
+	public void testGroovyScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
 
 		///////////////////////////////  SCRIPT AREA  ///////////////////////////////
 
@@ -19,7 +19,7 @@ public class GroovyScript {
 
 	}
 
-	public boolean testCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
+	public boolean testGroovyCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
 
 		/////////////////////////// CONDITION SCRIPT AREA  ///////////////////////////
 

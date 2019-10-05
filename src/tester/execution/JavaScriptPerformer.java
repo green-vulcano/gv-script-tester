@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 import javax.script.*;
 
-public class JavaScript {
+public class JavaScriptPerformer {
 
 	public void executeJavaScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
 
