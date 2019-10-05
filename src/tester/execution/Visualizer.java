@@ -21,7 +21,7 @@ public class Visualizer {
 		Files.write(Paths.get(LOG_FILE_PATH), output.getBytes(), StandardOpenOption.APPEND);
 	}
 
-	public static String generateBufferInfo(GVBuffer gvbuffer, String bufferName) {
+	private static String generateBufferInfo(GVBuffer gvbuffer, String bufferName) {
 		String output = "";
 		output += "---------------- GV BUFFER --------------------\n";
 		output += "\n";
