@@ -133,7 +133,7 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 #### Example 2 and 3: Groovy
 Have fun making these two examples work!
 
-***Scripts:***
+***Scripts*** -> *src/tester/groovy/GroovyScript.java*:
 ```
 public void testGroovyScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
 
