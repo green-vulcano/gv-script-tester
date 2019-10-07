@@ -1,6 +1,6 @@
-package tester.execution;
+package tester.execution.utility;
 
-import static tester.execution.Paths.LOG_FILE_PATH;
+import static tester.settings.Paths.LOG_FILE_PATH;
 
 import java.io.IOException;
 import java.nio.file.Files;

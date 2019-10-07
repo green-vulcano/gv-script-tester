@@ -1,8 +1,8 @@
 package tester.execution;
 
-import static tester.execution.Paths.*;
 import static tester.settings.Constants.IS_FUNCTION;
 import static tester.settings.Constants.IS_JAVASCRIPT;
+import static tester.settings.Paths.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,8 +16,10 @@ import javax.xml.bind.Unmarshaller;
 
 import it.greenvulcano.gvesb.buffer.GVBuffer;
 import it.greenvulcano.gvesb.buffer.GVException;
+import tester.execution.engine.JavaScriptPerformer;
 import tester.execution.mapping.Buffer;
 import tester.execution.mapping.Property;
+import tester.execution.utility.Visualizer;
 import tester.groovy.GroovyScript;
 
 public class GVScriptTester{
@@ -129,9 +131,9 @@ public class GVScriptTester{
 		if(!IS_JAVASCRIPT) {
 			gs = new GroovyScript();
 			if(IS_FUNCTION) {
-				conditionReturn = gs.testGroovyCondition(data, environment);
+				conditionReturn = gs.executeGroovyCondition(data, environment);
 			} else {
-				gs.testGroovyScript(data, environment);
+				gs.executeGroovyScript(data, environment);
 			}
 		} else {
 			javascript = new JavaScriptPerformer();
