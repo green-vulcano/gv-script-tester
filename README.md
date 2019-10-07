@@ -11,7 +11,7 @@ The installation is very simple, just clone ***gv-script-tester***, open the pro
 
 ### How to use
 
-To run a ***Javascript script***, write into *JavaScript.js* the script that you want to execute, set *IS_JAVASCRIPT = true* in *Constants.java*, than execute GVScriptTester.java. (Try to run example 1: Javascript)
+To run a ***Javascript script***, write into *JavaScript.js* the script that you want to execute, set *IS_JAVASCRIPT = true* in *Constants.java*, than run GVScriptTester.java as a java application. (Try to run example 1: Javascript)
 
 ```
 GVScriptTester          ->  tester/execution/ [GVScriptTester.java]
@@ -19,7 +19,7 @@ JavaScript body         ->  scriptTester/ [JavaScript.js]
 Javascript abilitation  ->  src/tester/settings/ [Constants.java]
 ```
 
-To run a ***Groovy script***, insert the script into the appropriate area in *GroovyScript.java*, set *IS_JAVASCRIPT = false*, than execute GVScriptTester.java. (Try to run example 2 - Groovy script)
+To run a ***Groovy script***, insert the script into the appropriate area in *GroovyScript.java*, set *IS_JAVASCRIPT = false*, than run GVScriptTester.java as a java application. (Try to run example 2 - Groovy script)
 
 ```
 GVScriptTester          ->  tester/execution/ [GVScriptTester.java]
