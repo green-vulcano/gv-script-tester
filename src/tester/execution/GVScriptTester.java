@@ -1,8 +1,8 @@
 package tester.execution;
 
+import static tester.execution.configuration.Paths.*;
 import static tester.settings.Constants.IS_FUNCTION;
 import static tester.settings.Constants.IS_JAVASCRIPT;
-import static tester.settings.Paths.*;
 
 import java.io.File;
 import java.io.IOException;

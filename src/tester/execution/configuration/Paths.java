@@ -1,4 +1,4 @@
-package tester.settings;
+package tester.execution.configuration;
 
 public interface Paths {
 	

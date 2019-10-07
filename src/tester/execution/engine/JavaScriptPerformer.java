@@ -1,6 +1,6 @@
 package tester.execution.engine;
 
-import static tester.settings.Paths.*;
+import static tester.execution.configuration.Paths.*;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
