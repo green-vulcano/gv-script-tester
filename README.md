@@ -11,16 +11,18 @@ The installation is very simple, just clone ***gv-script-tester***, open the pro
 
 ### How to use
 
-To run a ***Javascript script***, write into *JavaScript.js* the script that you want to execute and set *IS_JAVASCRIPT = true* in *Constants.java*. (Try to run example 1: Javascript)
+To run a ***Javascript script***, write into *JavaScript.js* the script that you want to execute, set *IS_JAVASCRIPT = true* in *Constants.java*, than execute GVScriptTester.java. (Try to run example 1: Javascript)
 
 ```
+GVScriptTester          ->  tester/execution/ [GVScriptTester.java]
 JavaScript body         ->  scriptTester/ [JavaScript.js]
 Javascript abilitation  ->  src/tester/settings/ [Constants.java]
 ```
 
-To run a ***Groovy script***, insert the script into the appropriate area in *GroovyScript.java* and set *IS_JAVASCRIPT = false*. (Try to run example 2 - Groovy script)
+To run a ***Groovy script***, insert the script into the appropriate area in *GroovyScript.java*, set *IS_JAVASCRIPT = false*, than execute GVScriptTester.java. (Try to run example 2 - Groovy script)
 
 ```
+GVScriptTester          ->  tester/execution/ [GVScriptTester.java]
 Groovy Script body      ->  src/tester/groovy/ [GroovyScript.java]
 Groovy abilitation      ->  src/tester/settings/ [Constants.java]
 ```
@@ -104,9 +106,9 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 ```
 ***Execution output:***
 ```
----------------- GV BUFFER -------------------- 
+---------------- GV BUFFER --------------------
 
-> Object (multiline view): 
+> Object (multiline view):
 {
 "plate":"AD123CD",
 "color":"red"
@@ -117,10 +119,10 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
     > LAST_NAME = Ginotti
     > PRIVATE_CAR_PLATE = AD123CD
 -----------------------------------------------
- 
-         SCRIPT EXECUTION (Javascript) 
- 
----------------- GV BUFFER -------------------- 
+
+         SCRIPT EXECUTION (Javascript)
+
+---------------- GV BUFFER --------------------
 
 > Object = Gino Ginotti's car is red!
 
@@ -135,7 +137,7 @@ Have fun making these two examples work!
 
 ***Scripts*** -> *src/tester/groovy/GroovyScript.java*:
 ```
-public void testGroovyScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
+public void executeGroovyScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
 
 	///////////////////////////////  SCRIPT AREA  ///////////////////////////////
 
@@ -148,7 +150,7 @@ public void testGroovyScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap
 
 }
 
-public boolean testGroovyCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
+public boolean executeGroovyCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
 
 	/////////////////////////// CONDITION SCRIPT AREA  ///////////////////////////
 
