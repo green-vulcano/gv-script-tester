@@ -1,16 +1,19 @@
 package tester.execution.utility;
 
 import static tester.execution.configuration.Paths.LOG_FILE_PATH;
+import static tester.settings.Constants.IMPROVE_JSON_VISUALIZATION;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
+import org.json.JSONObject;
+
 import it.greenvulcano.gvesb.buffer.GVBuffer;
 
 public class Visualizer {
-	
+
 	public static void printGVBuffer(GVBuffer gvbuffer) {
 		String output = generateBufferInfo(gvbuffer, null);
 		System.out.print(output);
@@ -48,6 +51,7 @@ public class Visualizer {
 	}
 
 	private static String printElement(String output, String element, String elementName) {
+		element = formatJson(element);
 		if(element!=null && element.contains("\n")) {
 			output += "> " + elementName + " (multiline view):\n" + element + "\n";
 		} else {
@@ -64,6 +68,18 @@ public class Visualizer {
 			}	
 		}
 		return output;
+	}
+
+	private static String formatJson(String s) {
+		if(IMPROVE_JSON_VISUALIZATION) {
+			try {
+				JSONObject jsonObject = new JSONObject(s);
+				return (jsonObject.toString(4));
+			} catch (Exception e) {
+				// is not a json :(
+			}
+		}
+		return s;
 	}
 
 }
