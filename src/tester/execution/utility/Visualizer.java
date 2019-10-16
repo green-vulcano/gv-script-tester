@@ -51,7 +51,9 @@ public class Visualizer {
 	}
 
 	private static String printElement(String output, String element, String elementName) {
-		element = formatJson(element);
+		if(IMPROVE_JSON_VISUALIZATION) {
+			element = formatJson(element);
+		}
 		if(element!=null && element.contains("\n")) {
 			output += "> " + elementName + " (multiline view):\n" + element + "\n";
 		} else {
@@ -71,13 +73,11 @@ public class Visualizer {
 	}
 
 	private static String formatJson(String s) {
-		if(IMPROVE_JSON_VISUALIZATION) {
-			try {
-				JSONObject jsonObject = new JSONObject(s);
-				return (jsonObject.toString(4));
-			} catch (Exception e) {
-				// is not a json :(
-			}
+		try {
+			JSONObject jsonObject = new JSONObject(s);
+			return (jsonObject.toString(4));
+		} catch (Exception e) {
+			// is not a json :(
 		}
 		return s;
 	}
