@@ -30,22 +30,17 @@ Groovy abilitation      ->  src/tester/settings/ [Constants.java]
     Note: If your script is a function with a boolean return, set IS_CONDITION = true 
     (Try to run example 3 - Groovy script with boolean return)
 
-To edit current (input) ***GVBuffer*** object, you have to edit the file *DATA-GVBuffer.txt*. If you need to add/modify properties of the current GVBuffer, you have to edit the file *DATA-Properties.xml*.
-
+To edit current (input) ***GVBuffer*** object or its properties, you have to edit the file *DATA-Buffer.xml*.
 ```
-Current buffer content      ->  scriptTester/ [DATA-GVBuffer.txt]
-Current buffer properties   ->  scriptTester/ [DATA-Properties.xml]
+Current buffer content      ->  scriptTester/ [DATA-Buffer.xml]
 ```
 
-To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-GVBuffer.txt* and *ENV-[buffer number]-Properties.xml* file for the buffer object and the related properties. The changes of additional GVBuffers during the execution are showed in the file *environmentLog.txt*.
+To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-Buffer.xml* file for the buffer object and the related properties. The changes of additional GVBuffers during the execution are showed in the file *environmentLog.txt*.
 
 ```
-Current buffer object         ->  scriptTester/ [DATA-GVBuffer.txt]
-Current buffer properties     ->  scriptTester/ [DATA-Properties.xml]
-Additional buffer object      ->  scriptTester/ [ENV-1-GVBuffer.txt]
-Additional buffer properties  ->  scriptTester/ [ENV-1-Properties.xml]
-Additional buffer object      ->  scriptTester/ [ENV-2-GVBuffer.txt]
-Additional buffer properties  ->  scriptTester/ [ENV-2-Properties.xml]
+Current buffer object         ->  scriptTester/ [DATA-Buffer.xml]
+Additional buffer object      ->  scriptTester/ [ENV-1-Buffer.xml]
+Additional buffer object      ->  scriptTester/ [ENV-2-Buffer.xml]
            . . .                             . . .
 Environment buffers log       ->  scriptTester/ [environmentLog.txt]
 ```
@@ -76,18 +71,17 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	data.setObject("Car not found!")
 }
 ```
-***Data buffer object*** -> *scriptTester/DATA-GVBuffer.txt*:
-```
-{
-"plate":"AD123CD",
-"color":"red"
-}
-```
-***Data buffer properties*** -> *scriptTester/DATA-Properties.xml*:
+***Data buffer*** -> *scriptTester/DATA-Buffer.xml*:
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE note SYSTEM "properties.dtd">
+<!DOCTYPE note SYSTEM "buffer.dtd">
 <buffer name="data">
+	<object>
+		<value><![CDATA[{
+"plate":"AD123CD",
+"color":"red"
+}]]></value>
+	</object>
 	<propertyList>
 		<property>
 			<name>FIRST_NAME</name>
