@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE note SYSTEM "properties.dtd">
+<!DOCTYPE note SYSTEM "buffer.dtd">
 <buffer name="data">
+	<object>
+		<value><![CDATA[{
+"plate":"AD123CD",
+"color":"red"
+}]]></value>
+	</object>
 	<propertyList>
 		<property>
 			<name>FIRST_NAME</name>

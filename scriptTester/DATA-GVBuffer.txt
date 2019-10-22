@@ -1,4 +1,0 @@
-{
-"plate":"AD123CD",
-"color":"red"
-}

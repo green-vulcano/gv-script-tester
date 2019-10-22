@@ -49,11 +49,10 @@ public class GVScriptTester{
 
 	private static void initializeTest(GVBuffer data, HashMap<String,GVBuffer> environment) throws GVException, IOException {
 
-		String objectPath = GV_FILE_BUFFER_NAME;
-		String propertyPath = GV_DATA_BUFFER_PROPERTIES_NAME;
+		String dataBufferDefinitionPath = GV_DATA_BUFFER_PROPERTIES_NAME;
 
 		try {
-			readBufferFromFile(data, objectPath, propertyPath);
+			readBufferFromFile(data, dataBufferDefinitionPath);
 		} catch (Exception e1) {
 			System.out.println("ERROR: unable to initialize 'data' gvbuffer");
 			e1.printStackTrace();
@@ -63,10 +62,9 @@ public class GVScriptTester{
 		int count = 1;
 		while(bufferFileExists) {
 			try {
-				String envObjectPath = ENV_OBJECT_PATH_FIRST_PART + count + ENV_OBJECT_PATH_LAST_PART;
-				String envPropertiesPath = ENV_PROPERTIES_PATH_FIRST_PART + count + ENV_PROPERTIES_PATH_LAST_PART;
+				String environmentBufferDefinitionPath = ENV_PROPERTIES_PATH_FIRST_PART + count + ENV_PROPERTIES_PATH_LAST_PART;
 				GVBuffer envBuffer = new GVBuffer();
-				String bufferName = readBufferFromFile(envBuffer, envObjectPath, envPropertiesPath);
+				String bufferName = readBufferFromFile(envBuffer, environmentBufferDefinitionPath);
 				if (bufferName != null && !bufferName.equals("")) {
 					environment.put(bufferName,envBuffer);
 				}
@@ -78,10 +76,8 @@ public class GVScriptTester{
 
 	}
 
-	private static String readBufferFromFile(GVBuffer gvbuffer, String objectPath, String propertyPath)
+	private static String readBufferFromFile(GVBuffer gvbuffer, String propertyPath)
 			throws Exception {
-
-		gvbuffer.setObject(new String(Files.readAllBytes(Paths.get(objectPath))));
 
 		File source = new File(propertyPath);
 		JAXBContext jaxbContext = JAXBContext.newInstance(Buffer.class);
@@ -94,6 +90,7 @@ public class GVScriptTester{
 				System.out.println("ERROR: missing mandatory field 'bufferName' in " + propertyPath);
 				return null;
 			}
+			gvbuffer.setObject(element.getObject().getValue().getvalue());
 			for(Property propertyPair : element.getPropertyList().getProperty()) {
 				gvbuffer.setProperty(propertyPair.getName().getvalue(), propertyPair.getValue().getvalue());
 			}

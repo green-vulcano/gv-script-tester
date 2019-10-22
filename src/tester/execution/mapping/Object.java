@@ -23,17 +23,14 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "name",
     "value"
 })
-@XmlRootElement(name = "property")
-public class Property {
+@XmlRootElement(name = "object")
+public class Object {
 
     @XmlAttribute(name = "xmlns")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String xmlns;
-    @XmlElement(required = true)
-    protected Name name;
     @XmlElement(required = true)
     protected Value value;
 
@@ -63,30 +60,6 @@ public class Property {
      */
     public void setXmlns(String value) {
         this.xmlns = value;
-    }
-
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Name }
-     *     
-     */
-    public Name getName() {
-        return name;
-    }
-
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Name }
-     *     
-     */
-    public void setName(Name value) {
-        this.name = value;
     }
 
     /**
