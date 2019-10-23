@@ -36,6 +36,7 @@ Current buffer content      ->  scriptTester/ [DATA-Buffer.xml]
 ```
 
 To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-Buffer.xml* file for the buffer object and the related properties. The changes of additional GVBuffers during the execution are showed in the file *environmentLog.txt*. You can also change the property *SHOW_ALL_BUFFERS_IN_OUTPUT* to always show all the buffers.
+
 TIPS: you can exclude a buffer setting its name as a void string (<buffer name="">).
 
 ```
