@@ -3,7 +3,7 @@ package tester.execution;
 import static tester.execution.configuration.Paths.*;
 import static tester.settings.Constants.IS_FUNCTION;
 import static tester.settings.Constants.IS_JAVASCRIPT;
-import static tester.settings.Constants.SHOW_ALL_BUFFER_IN_OUTPUT;
+import static tester.settings.Constants.SHOW_ALL_BUFFERS_IN_OUTPUT;
 
 import java.io.File;
 import java.io.IOException;
@@ -145,7 +145,7 @@ public class GVScriptTester{
 	}
 
 	private static void showBuffers(GVBuffer data, HashMap<String, GVBuffer> environment) throws IOException {
-		if(!SHOW_ALL_BUFFER_IN_OUTPUT) {
+		if(!SHOW_ALL_BUFFERS_IN_OUTPUT) {
 			Visualizer.printGVBuffer(data, null);	
 			for(String bufferName: environment.keySet()) {
 				Visualizer.writeInTheLog(environment.get(bufferName),bufferName);
