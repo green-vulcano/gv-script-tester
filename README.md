@@ -2,7 +2,7 @@
 
 ### Overview
 
-**GV Script Tester** allows you to quickly run and debug a *Javascript/Groovy* script using the [***gv-engine***](https://github.com/green-vulcano/gv-engine) java classes by setting up gvbuffers with the related properties (including many execution options), running the script showing its output and all changes in the related gvbuffers.
+**GV Script Tester** allows you to quickly run and debug a *Javascript/Groovy* script using the [***gv-engine***](https://github.com/green-vulcano/gv-engine) java classes, by setting up gvbuffers with the related properties (including many execution options), running the script showing its output and all changes in the related gvbuffers.
 You can also set up multiple gvbuffers using the environment system. 
 
 ![alt text](https://raw.githubusercontent.com/Luke460/gv-script-tester/master/gv-script-tester.png)
@@ -37,7 +37,7 @@ To edit current (input) ***GVBuffer*** object or its properties, you have to edi
 Current buffer content      ->  scriptTester/ [DATA-Buffer.xml]
 ```
 
-To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-Buffer.xml* file for the buffer object and the related properties.
+To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-Buffer.xml* file for the buffer object and the related properties. To hide environment buffers on the output you can set *SHOW_ALL_BUFFERS_IN_OUTPUT = false*.
 
 TIPS: you can exclude a buffer setting its name as a void string (buffer name="").
 
