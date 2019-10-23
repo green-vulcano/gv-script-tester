@@ -70,6 +70,7 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	surname = data.getProperty("LAST_NAME")
 	var output = name + " " + surname + "'s car is " + inputColor + "!"
 	data.setObject(output)
+	data.setProperty("TAX", environment.get("test").getProperty("TAX"))
 } else {
 	data.setObject("Car not found!")
 }
@@ -101,14 +102,32 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	</propertyList>
 </buffer>
 ```
+***Test buffer*** -> *scriptTester/DATA-Buffer.xml*:
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "buffer.dtd">
+<buffer name="test">
+	<object>
+		<value><![CDATA[buffer ENV 1]]></value>
+	</object>
+	<propertyList>
+		<property>
+			<name>TAX</name>
+			<value><![CDATA[10]]></value>
+		</property>
+	</propertyList>
+</buffer>
+```
 ***Execution output:***
 ```
 ---------------- GV BUFFER --------------------
 
+> Name = data
+
 > Object (multiline view):
 {
-"plate":"AD123CD",
-"color":"red"
+    "color": "red",
+    "plate": "AD123CD"
 }
 
 > Properties:
@@ -117,9 +136,25 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
     > PRIVATE_CAR_PLATE = AD123CD
 -----------------------------------------------
 
+---------------- GV BUFFER --------------------
+
+> Name = test
+
+> Object = buffer ENV 1
+
+> Properties:
+    > TAX = 10
+-----------------------------------------------
+
+###############################################
+
          SCRIPT EXECUTION (Javascript)
 
+###############################################
+
 ---------------- GV BUFFER --------------------
+
+> Name = data
 
 > Object = Gino Ginotti's car is red!
 
@@ -127,6 +162,17 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
     > FIRST_NAME = Gino
     > LAST_NAME = Ginotti
     > PRIVATE_CAR_PLATE = AD123CD
+    > TAX = 10
+-----------------------------------------------
+
+---------------- GV BUFFER --------------------
+
+> Name = test
+
+> Object = buffer ENV 1
+
+> Properties:
+    > TAX = 10
 -----------------------------------------------
 ```
 #### Example 2 and 3: Groovy
