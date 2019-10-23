@@ -10,5 +10,6 @@ public interface Constants {
 	
 	//// Visual settings
 	public static final boolean IMPROVE_JSON_VISUALIZATION = true;
+	public static final boolean SHOW_ALL_BUFFER_IN_OUTPUT = false;
 	
 }

@@ -1,4 +1,4 @@
-package tester.execution.utility;
+package tester.execution.output;
 
 import static tester.execution.configuration.Paths.LOG_FILE_PATH;
 import static tester.settings.Constants.IMPROVE_JSON_VISUALIZATION;
@@ -14,8 +14,8 @@ import it.greenvulcano.gvesb.buffer.GVBuffer;
 
 public class Visualizer {
 
-	public static void printGVBuffer(GVBuffer gvbuffer) {
-		String output = generateBufferInfo(gvbuffer, null);
+	public static void printGVBuffer(GVBuffer gvbuffer, String bufferName) {
+		String output = generateBufferInfo(gvbuffer, bufferName);
 		System.out.print(output);
 	}
 
