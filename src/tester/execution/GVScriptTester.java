@@ -147,20 +147,19 @@ public class GVScriptTester{
 	}
 
 	private static void showBuffers(GVBuffer data, HashMap<String, GVBuffer> environment) throws IOException {
+		
 		if(!SHOW_ALL_BUFFERS_IN_OUTPUT) {
 			Visualizer.printGVBuffer(data, null);	
-			for(String bufferName: environment.keySet()) {
-				Visualizer.writeInTheLog(environment.get(bufferName),bufferName);
-			}
 		} else {
 			Visualizer.printGVBuffer(data, getInputBufferName());	
 			for(String bufferName: environment.keySet()) {
 				Visualizer.printGVBuffer(environment.get(bufferName), bufferName);
 			}
-			Visualizer.writeInTheLog(data, getInputBufferName());	
-			for(String bufferName: environment.keySet()) {
-				Visualizer.writeInTheLog(environment.get(bufferName),bufferName);
-			}
+		}
+		
+		Visualizer.writeInTheLog(data, getInputBufferName());	
+		for(String bufferName: environment.keySet()) {
+			Visualizer.writeInTheLog(environment.get(bufferName),bufferName);
 		}
 
 	}
