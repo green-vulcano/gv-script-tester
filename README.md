@@ -1,5 +1,7 @@
 ## GREEN VULCANO SCRIPT TESTER
 
+![alt text](https://raw.githubusercontent.com/Luke460/gv-script-tester/master/gv-script-tester.png)
+
 ### Overview
 
 **GV Script Tester** allows you to quickly run and debug a *Javascript/Groovy* script using the [***gv-engine***](https://github.com/green-vulcano/gv-engine) java classes by setting up gvbuffers with the related properties (including many execution options), running the script showing its output and all changes in the related gvbuffers.
