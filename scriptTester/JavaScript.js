@@ -10,6 +10,7 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	surname = data.getProperty("LAST_NAME")
 	var output = name + " " + surname + "'s car is " + inputColor + "!"
 	data.setObject(output)
+	data.setProperty("TAX", environment.get("test").getProperty("TAX"))
 } else {
 	data.setObject("Car not found!")
 }

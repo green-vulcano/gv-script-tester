@@ -119,7 +119,9 @@ public class GVScriptTester{
 		if(IS_FUNCTION) {
 			function = " function";
 		}
-		String message = "         SCRIPT EXECUTION (" + lang + function + ")\n\n";
+		String message = "###############################################\n\n" + 
+				"         SCRIPT EXECUTION (" + lang + function + ")\n" + 
+				"\n###############################################\n\n";
 		System.out.print(message);
 		Files.write(Paths.get(LOG_FILE_PATH), (message).getBytes(), StandardOpenOption.APPEND);
 		GroovyScript gs = null;

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE note SYSTEM "buffer.dtd">
-<buffer name="test-2">
-	<object>
-		<value><![CDATA[buffer ENV 1]]></value>
-	</object>
-	<propertyList>
-	</propertyList>
-</buffer>
