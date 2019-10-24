@@ -96,7 +96,10 @@ public class GVScriptTester{
 			}
 			gvbuffer.setObject(element.getObject().getValue().getvalue());
 			for(Property propertyPair : element.getPropertyList().getProperty()) {
-				gvbuffer.setProperty(propertyPair.getName().getvalue(), propertyPair.getValue().getvalue());
+				String propertyName = propertyPair.getName().getvalue();
+				if(propertyName!=null && !propertyName.equals("")) {
+					gvbuffer.setProperty(propertyName, propertyPair.getValue().getvalue());
+				}
 			}
 
 		} catch (Exception e) {
