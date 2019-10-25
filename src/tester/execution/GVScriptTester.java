@@ -99,7 +99,14 @@ public class GVScriptTester{
 			for(Property propertyPair : element.getPropertyList().getProperty()) {
 				String propertyName = propertyPair.getName().getvalue();
 				if(propertyName!=null && !propertyName.equals("")) {
-					gvbuffer.setProperty(propertyName, propertyPair.getValue().getvalue());
+					if(propertyPair.getValue()!=null) {
+						gvbuffer.setProperty(propertyName, propertyPair.getValue().getvalue());
+					} else {
+						throw new it.greenvulcano.gvesb.buffer.GVException(
+								"GV Property cannot be null: buffer = " + element.getName() + 
+								", property name = " + propertyName +
+								", value = null\n");
+					}
 				}
 			}
 
