@@ -94,7 +94,8 @@ public class GVScriptTester{
 				System.out.println("ERROR: missing mandatory field 'bufferName' in " + propertyPath);
 				return null;
 			}
-			gvbuffer.setObject(element.getObject().getValue().getvalue());
+			if(element.getObject()!=null && element.getObject().getValue()!=null)
+				gvbuffer.setObject(element.getObject().getValue().getvalue());
 			for(Property propertyPair : element.getPropertyList().getProperty()) {
 				String propertyName = propertyPair.getName().getvalue();
 				if(propertyName!=null && !propertyName.equals("")) {
