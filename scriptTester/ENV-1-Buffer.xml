@@ -2,7 +2,6 @@
 <!DOCTYPE note SYSTEM "buffer.dtd">
 <buffer name="test">
 	<object>
-		<value><![CDATA[buffer ENV 1]]></value>
 	</object>
 	<propertyList>
 		<property>
