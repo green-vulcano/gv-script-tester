@@ -5,7 +5,7 @@
 	</object>
 	<propertyList>
 		<property>
-			<name>TAX</name>
+			<name>FLAT_TAX</name>
 			<value><![CDATA[10]]></value>
 		</property>
 	</propertyList>

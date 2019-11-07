@@ -2,15 +2,23 @@
 
 var input = JSON.parse(new java.lang.String(data.getObject()));
 
-inputPlate = input.plate
-inputColor = input.color
-
-if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
-	name = data.getProperty("FIRST_NAME")
-	surname = data.getProperty("LAST_NAME")
-	var output = name + " " + surname + "'s car is " + inputColor + "!"
-	data.setObject(output)
-	data.setProperty("TAX", environment.get("test").getProperty("TAX"))
+if(input.plate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
+	
+	name = data.getProperty("FIRST_NAME");
+	surname = data.getProperty("LAST_NAME");
+	var description = name + " " + surname + "'s car is " + input.color + ".";
+	
+	data.setObject(description);
+	
+	var cost = parseInt(input.cost);
+	var tax = parseInt(environment.get("test").getProperty("FLAT_TAX"));
+	var total = cost + tax;
+	
+	data.setProperty("TOTAL", total);
+	
 } else {
-	data.setObject("Car not found!")
+	
+	data.setObject("Car not found!");
+	data.setProperty("TOTAL", "0");
+	
 }
