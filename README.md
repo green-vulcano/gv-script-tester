@@ -64,17 +64,25 @@ GV-SriptTester settings     ->  src/tester/settings/ [Constants.java]
 
 var input = JSON.parse(new java.lang.String(data.getObject()));
 
-inputPlate = input.plate
-inputColor = input.color
-
-if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
-	name = data.getProperty("FIRST_NAME")
-	surname = data.getProperty("LAST_NAME")
-	var output = name + " " + surname + "'s car is " + inputColor + "!"
-	data.setObject(output)
-	data.setProperty("TAX", environment.get("test").getProperty("TAX"))
+if(input.plate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
+	
+	name = data.getProperty("FIRST_NAME");
+	surname = data.getProperty("LAST_NAME");
+	var description = name + " " + surname + "'s car is " + input.color + ".";
+	
+	data.setObject(description);
+	
+	var cost = parseInt(input.cost);
+	var tax = parseInt(environment.get("test").getProperty("FLAT_TAX"));
+	var total = cost + tax;
+	
+	data.setProperty("TOTAL", total);
+	
 } else {
-	data.setObject("Car not found!")
+	
+	data.setObject("Car not found!");
+	data.setProperty("TOTAL", "0");
+	
 }
 ```
 ***Data buffer*** -> *scriptTester/DATA-Buffer.xml*:
@@ -85,7 +93,8 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	<object>
 		<value><![CDATA[{
 "plate":"AD123CD",
-"color":"red"
+"color":"red",
+"cost":"100"
 }]]></value>
 	</object>
 	<propertyList>
@@ -110,11 +119,10 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 <!DOCTYPE note SYSTEM "buffer.dtd">
 <buffer name="test">
 	<object>
-		<value><![CDATA[buffer ENV 1]]></value>
 	</object>
 	<propertyList>
 		<property>
-			<name>TAX</name>
+			<name>FLAT_TAX</name>
 			<value><![CDATA[10]]></value>
 		</property>
 	</propertyList>
@@ -128,6 +136,7 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 
 > Object (multiline view):
 {
+    "cost": "100",
     "color": "red",
     "plate": "AD123CD"
 }
@@ -142,10 +151,10 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 
 > Name = test
 
-> Object = buffer ENV 1
+> Object is null
 
 > Properties:
-    > TAX = 10
+    > FLAT_TAX = 10
 -----------------------------------------------
 
 ###############################################
@@ -158,23 +167,23 @@ if(inputPlate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 
 > Name = data
 
-> Object = Gino Ginotti's car is red!
+> Object = Gino Ginotti's car is red.
 
 > Properties:
     > FIRST_NAME = Gino
     > LAST_NAME = Ginotti
     > PRIVATE_CAR_PLATE = AD123CD
-    > TAX = 10
+    > TOTAL = 110
 -----------------------------------------------
 
 ---------------- GV BUFFER --------------------
 
 > Name = test
 
-> Object = buffer ENV 1
+> Object is null
 
 > Properties:
-    > TAX = 10
+    > FLAT_TAX = 10
 -----------------------------------------------
 ```
 #### Example 2 and 3: Groovy
