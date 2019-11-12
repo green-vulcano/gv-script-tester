@@ -44,7 +44,7 @@ public class GVScriptTester{
 		boolean conditionReturn;
 		try {
 			conditionReturn = executeTest(data, environment);
-			BufferHandler.saveBuffers(environment);
+			saveBuffers(environment);
 			showBuffers(data, environment);
 			if(IS_FUNCTION) {
 				System.out.println();
@@ -86,6 +86,22 @@ public class GVScriptTester{
 				bufferFileExists = false;
 			}
 			count++;
+		}
+
+	}
+	
+	private static void saveBuffers(HashMap<String,GVBuffer> environment) throws GVException, IOException {
+
+		for(Entry<String,GVBuffer> temp: environment.entrySet()) {
+			String tempName = temp.getKey();
+			GVBuffer tempBuffer = temp.getValue();
+			try {
+				String path = GV_OUTPUT_DATA_BUFFER_PATH + tempName + "-Buffer.xml";
+				BufferHandler.saveBufferOnFile(tempName,tempBuffer,path);
+			} catch (Exception e) {
+				System.out.println("ERROR: unable to save output Buffers.");
+				e.printStackTrace();
+			}
 		}
 
 	}

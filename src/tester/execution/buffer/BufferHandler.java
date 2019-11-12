@@ -24,22 +24,6 @@ import tester.execution.mapping.Value;
 
 public class BufferHandler {
 
-	public static void saveBuffers(HashMap<String,GVBuffer> environment) throws GVException, IOException {
-
-		for(Entry<String,GVBuffer> temp: environment.entrySet()) {
-			String tempName = temp.getKey();
-			GVBuffer tempBuffer = temp.getValue();
-			try {
-				String path = GV_OUTPUT_DATA_BUFFER_PATH + tempName + "-Buffer.xml";
-				saveBufferOnFile(tempName,tempBuffer,path);
-			} catch (Exception e) {
-				System.out.println("ERROR: unable to save output Buffers.");
-				e.printStackTrace();
-			}
-		}
-
-	}
-
 	public static String readBufferFromFile(GVBuffer gvbuffer, String propertyPath)
 			throws Exception {
 
