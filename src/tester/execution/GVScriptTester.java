@@ -6,20 +6,29 @@ import static tester.settings.Constants.IS_JAVASCRIPT;
 import static tester.settings.Constants.SHOW_ALL_BUFFERS_IN_OUTPUT;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import it.greenvulcano.gvesb.buffer.GVBuffer;
 import it.greenvulcano.gvesb.buffer.GVException;
+import tester.execution.buffer.BufferHandler;
 import tester.execution.engine.JavaScriptPerformer;
 import tester.execution.mapping.Buffer;
+import tester.execution.mapping.Name;
 import tester.execution.mapping.Property;
+import tester.execution.mapping.PropertyList;
+import tester.execution.mapping.Value;
 import tester.execution.output.Visualizer;
 import tester.groovy.GroovyScript;
 
@@ -35,6 +44,7 @@ public class GVScriptTester{
 		boolean conditionReturn;
 		try {
 			conditionReturn = executeTest(data, environment);
+			BufferHandler.saveBuffers(environment);
 			showBuffers(data, environment);
 			if(IS_FUNCTION) {
 				System.out.println();
@@ -55,7 +65,7 @@ public class GVScriptTester{
 		String dataBufferDefinitionPath = GV_DATA_BUFFER_PROPERTIES_NAME;
 
 		try {
-			inputBufferName = readBufferFromFile(data, dataBufferDefinitionPath);
+			inputBufferName = BufferHandler.readBufferFromFile(data, dataBufferDefinitionPath);
 			environment.put(inputBufferName, data);
 		} catch (Exception e1) {
 			System.out.println("ERROR: unable to initialize 'data' gvbuffer");
@@ -68,7 +78,7 @@ public class GVScriptTester{
 			try {
 				String environmentBufferDefinitionPath = ENV_PROPERTIES_PATH_FIRST_PART + count + ENV_PROPERTIES_PATH_LAST_PART;
 				GVBuffer envBuffer = new GVBuffer();
-				String bufferName = readBufferFromFile(envBuffer, environmentBufferDefinitionPath);
+				String bufferName = BufferHandler.readBufferFromFile(envBuffer, environmentBufferDefinitionPath);
 				if (bufferName != null && !bufferName.equals("")) {
 					environment.put(bufferName,envBuffer);
 				}
@@ -79,46 +89,7 @@ public class GVScriptTester{
 		}
 
 	}
-
-	private static String readBufferFromFile(GVBuffer gvbuffer, String propertyPath)
-			throws Exception {
-
-		File source = new File(propertyPath);
-		JAXBContext jaxbContext = JAXBContext.newInstance(Buffer.class);
-		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-		System.setProperty("javax.xml.accessExternalDTD", "all"); 
-		Buffer element = (Buffer) jaxbUnmarshaller.unmarshal(source);
-
-		try {
-			if(element.getName()==null) {
-				System.out.println("ERROR: missing mandatory field 'bufferName' in " + propertyPath);
-				return null;
-			}
-			if(element.getObject()!=null && element.getObject().getValue()!=null)
-				gvbuffer.setObject(element.getObject().getValue().getvalue());
-			for(Property propertyPair : element.getPropertyList().getProperty()) {
-				String propertyName = propertyPair.getName().getvalue();
-				if(propertyName!=null && !propertyName.equals("")) {
-					if(propertyPair.getValue()!=null) {
-						gvbuffer.setProperty(propertyName, propertyPair.getValue().getvalue());
-					} else {
-						throw new it.greenvulcano.gvesb.buffer.GVException(
-								"GV Property cannot be null: buffer = " + element.getName() + 
-								", property name = " + propertyName +
-								", value = null\n");
-					}
-				}
-			}
-
-		} catch (Exception e) {
-			System.out.println("ERROR: unable to read gv-script-tester configuration file: " + propertyPath);
-			e.printStackTrace();
-		}
-
-		return element.getName();
-
-	}
-
+	
 	private static boolean executeTest(GVBuffer data, HashMap<String,GVBuffer> environment) throws Exception {
 		showBuffers(data, environment);
 		String lang;

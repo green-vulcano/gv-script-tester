@@ -90,5 +90,9 @@ public class PropertyList {
         }
         return this.property;
     }
+    
+    public void setProperty(List<Property> properties) {
+        this.property = properties;
+    }
 
 }

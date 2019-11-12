@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<buffer name="test">
+    <object>
+        <value/>
+    </object>
+    <propertyList>
+        <property>
+            <name>FLAT_TAX</name>
+            <value>10</value>
+        </property>
+    </propertyList>
+</buffer>
