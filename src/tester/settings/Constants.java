@@ -10,7 +10,6 @@ public interface Constants {
 	
 	//// Visual settings
 	public static final boolean IMPROVE_JSON_VISUALIZATION = true;
-	public static final boolean IMPROVE_XML_VISUALIZATION = false; //NOT WORKING YET!
 	public static final boolean SHOW_ALL_BUFFERS_IN_OUTPUT = true;
 	
 }
