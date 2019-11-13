@@ -67,9 +67,11 @@ public class BufferHandler {
 			throws Exception {
 
 		JAXBContext jaxbContext = JAXBContext.newInstance(Buffer.class);
-		Marshaller jaxbmarshaller = jaxbContext.createMarshaller();
-		jaxbmarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 		System.setProperty("javax.xml.accessExternalDTD", "all"); 
+	    jaxbMarshaller.setProperty("com.sun.xml.internal.bind.xmlHeaders", 
+	    		  "\n<!DOCTYPE note SYSTEM \"buffer.dtd\">");
+	    jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		OutputStream os = new FileOutputStream(propertyPath);
 		
 		Buffer element = new Buffer();
@@ -101,7 +103,7 @@ public class BufferHandler {
 			element.getPropertyList().getProperty().add(gvproperty);
 			
 		}
-		jaxbmarshaller.marshal(element, os);
+		jaxbMarshaller.marshal(element, os);
 	}
 	
 }
