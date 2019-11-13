@@ -37,7 +37,8 @@ To edit current (input) ***GVBuffer*** object or its properties, you have to edi
 Current buffer content      ->  scriptTester/ [DATA-Buffer.xml]
 ```
 
-To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-Buffer.xml* file for the buffer object and the related properties. To hide environment buffers on the output you can set *SHOW_ALL_BUFFERS_IN_OUTPUT = false*.
+To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-Buffer.xml* file for the buffer object and the related properties. To hide environment buffers on the output you can set *SHOW_ALL_BUFFERS_IN_OUTPUT = false*. 
+After any execution, buffers are saved in xml format in the *output* folder.
 
 TIPS: you can exclude a buffer setting its name as a void string (buffer name="").
 
@@ -47,6 +48,7 @@ Additional buffer object      ->  scriptTester/ [ENV-1-Buffer.xml]
 Additional buffer object      ->  scriptTester/ [ENV-2-Buffer.xml]
            . . .                             . . .
 Environment buffers log       ->  scriptTester/ [environmentLog.txt]
+Buffers after execution (xml) ->  output/ [BufferName.xml]
 SHOW_ALL_BUFFERS_IN_OUTPUT    ->  src/tester/settings/ [Constants.java]
 ```
 
