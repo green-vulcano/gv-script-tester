@@ -114,7 +114,7 @@ if(input.plate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	</propertyList>
 </buffer>
 ```
-***Test buffer*** -> *scriptTester/ENV-1-Buffer.xml*:
+***Test buffer*** *(just another buffer)* -> *scriptTester/ENV-1-Buffer.xml*:
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE note SYSTEM "buffer.dtd">
