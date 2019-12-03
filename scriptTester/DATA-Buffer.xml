@@ -2,24 +2,15 @@
 <!DOCTYPE note SYSTEM "buffer.dtd">
 <buffer name="data">
 	<object>
-		<value><![CDATA[{
-"plate":"AD123CD",
-"color":"red",
-"cost":"100"
-}]]></value>
+		<value><![CDATA[
+{
+	"player": {
+		"name": "Pino",
+		"surname": "Pinotti",
+		"number": 10
+	}
+}
+]]></value>
 	</object>
-	<propertyList>
-		<property>
-			<name>FIRST_NAME</name>
-			<value><![CDATA[Gino]]></value>
-		</property>
-		<property>
-			<name>LAST_NAME</name>
-			<value><![CDATA[Ginotti]]></value>
-		</property>
-		<property>
-			<name>PRIVATE_CAR_PLATE</name>
-			<value><![CDATA[AD123CD]]></value>
-		</property>
-	</propertyList>
+<propertyList></propertyList>
 </buffer>
