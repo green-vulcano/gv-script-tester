@@ -204,6 +204,67 @@ public void executeGroovyScript(it.greenvulcano.gvesb.buffer.GVBuffer data, Hash
 	/////////////////////////////////////////////////////////////////////////////
 
 }
+```
+***Data buffer*** -> *scriptTester/DATA-Buffer.xml*:
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "buffer.dtd">
+<buffer name="data">
+	<object>
+		<value><![CDATA[{
+	"player": {
+		"name": "Pino",
+		"surname": "Pinotti",
+		"number": 10
+	}
+}]]></value>
+	</object>
+	<propertyList></propertyList>
+</buffer>
+```
+***Execution output:***
+```
+---------------- GV BUFFER --------------------
+
+> Name = data
+
+> Object (multiline view):
+{"player": {
+    "number": 10,
+    "surname": "Pinotti",
+    "name": "Pino"
+}}
+
+> No Properties
+-----------------------------------------------
+
+###############################################
+
+         SCRIPT EXECUTION (Groovy)
+
+###############################################
+
+---------------- GV BUFFER --------------------
+
+> Name = data
+
+> Object (multiline view):
+{"player": {
+    "number": 10,
+    "surname": "Pinotti",
+    "name": "Pino"
+}}
+
+> Properties:
+    > OUTPUT_JSON (multiline view):
+{
+    "number": 10,
+    "code": "PINOPINOTTI10"
+}
+-----------------------------------------------
+```
+
+
 
 public boolean executeGroovyCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
 
