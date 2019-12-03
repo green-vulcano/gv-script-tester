@@ -190,7 +190,7 @@ if(input.plate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 
 #### Example 2: Groovy
 
-TIPS: remember to set *IS_JAVASCRIPT = false*
+***TIPS***: remember to set *IS_JAVASCRIPT = false*
 
 ***Scripts*** -> *src/tester/groovy/GroovyScript.java*:
 ```
@@ -280,7 +280,7 @@ public void executeGroovyScript(it.greenvulcano.gvesb.buffer.GVBuffer data, Hash
 
 Have fun making this simple example work!
 
-TIPS: remember to set *IS_FUNCTION = true*
+***TIPS***: remember to set *IS_FUNCTION = true*
 
 ```
 public boolean executeGroovyCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
