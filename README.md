@@ -187,8 +187,8 @@ if(input.plate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
     > FLAT_TAX = 10
 -----------------------------------------------
 ```
-#### Example 2 and 3: Groovy
-Have fun making these two examples work!
+
+#### Example 2: Groovy
 
 ***Scripts*** -> *src/tester/groovy/GroovyScript.java*:
 ```
@@ -196,10 +196,21 @@ public void executeGroovyScript(it.greenvulcano.gvesb.buffer.GVBuffer data, Hash
 
 	///////////////////////////////  SCRIPT AREA  ///////////////////////////////
 
-	// example 2 - Groovy script
-	org.json.JSONObject inputJson = new org.json.JSONObject(data.getObject());
-	String city = inputJson.getString("city").toUpperCase();
-    	data.setProperty("CITY", city);
+	String inputJsonString = data.getObject().toString();
+		
+	org.json.JSONObject inputJson = new org.json.JSONObject(inputJsonString);
+		
+	int number = inputJson.getJSONObject("player").getInt("number");
+	String name = inputJson.getJSONObject("player").getString("name");
+	String surname = inputJson.getJSONObject("player").getString("surname");
+		
+	String code = (name + surname + number).toUpperCase();
+	
+	org.json.JSONObject outputJson = new org.json.JSONObject();
+	outputJson.put("number", number);
+	outputJson.put("code", code);
+		
+	data.setProperty("OUTPUT_JSON", outputJson.toString());	
 
 	/////////////////////////////////////////////////////////////////////////////
 
@@ -263,9 +274,10 @@ public void executeGroovyScript(it.greenvulcano.gvesb.buffer.GVBuffer data, Hash
 }
 -----------------------------------------------
 ```
+#### Example 3: Groovy (with return value)
 
-
-
+Have fun making this simple example work!
+```
 public boolean executeGroovyCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
 
 	/////////////////////////// CONDITION SCRIPT AREA  ///////////////////////////
