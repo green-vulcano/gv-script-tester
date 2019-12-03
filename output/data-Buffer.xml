@@ -2,20 +2,24 @@
 <!DOCTYPE note SYSTEM "buffer.dtd">
 <buffer name="data">
     <object>
-        <value>
-{
-	"player": {
-		"name": "Pino",
-		"surname": "Pinotti",
-		"number": 10
-	}
-}
-</value>
+        <value>Gino Ginotti's car is red.</value>
     </object>
     <propertyList>
         <property>
-            <name>OUTPUT_JSON</name>
-            <value>{"number":10,"code":"PINOPINOTTI10"}</value>
+            <name>FIRST_NAME</name>
+            <value>Gino</value>
+        </property>
+        <property>
+            <name>LAST_NAME</name>
+            <value>Ginotti</value>
+        </property>
+        <property>
+            <name>PRIVATE_CAR_PLATE</name>
+            <value>AD123CD</value>
+        </property>
+        <property>
+            <name>TOTAL</name>
+            <value>110</value>
         </property>
     </propertyList>
 </buffer>
