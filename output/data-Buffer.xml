@@ -2,7 +2,7 @@
 <!DOCTYPE note SYSTEM "buffer.dtd">
 <buffer name="data">
     <object>
-        <value/>
+        <value>Gino Ginotti's car is red.</value>
     </object>
     <propertyList>
         <property>
@@ -16,6 +16,10 @@
         <property>
             <name>PRIVATE_CAR_PLATE</name>
             <value>AD123CD</value>
+        </property>
+        <property>
+            <name>TOTAL</name>
+            <value>110</value>
         </property>
     </propertyList>
 </buffer>
