@@ -2,11 +2,7 @@
 <!DOCTYPE note SYSTEM "buffer.dtd">
 <buffer name="data">
 	<object>
-		<value><![CDATA[{
-"plate":"AD123CD",
-"color":"red",
-"cost":"100"
-}]]></value>
+		<value><![CDATA[[{"kmIncluded": {"CS-C": {"id_fuel_type":-1,"FOUR_WEEKS_INCLUDED_KM":-1,"WEEK_INCLUDED_KM":-1,"WEEKEND_INCLUDED_KM":-1,"DAY_INCLUDED_KM":-1,"HOUR_INCLUDED_KM":80,"MINUTE_INCLUDED_KM":80}, "CS-E": {"id_fuel_type":-1,"FOUR_WEEKS_INCLUDED_KM":-1,"WEEK_INCLUDED_KM":-1,"WEEKEND_INCLUDED_KM":-1,"DAY_INCLUDED_KM":-1,"HOUR_INCLUDED_KM":80,"MINUTE_INCLUDED_KM":80}, "CS-F": {"id_fuel_type":-1,"FOUR_WEEKS_INCLUDED_KM":-1,"WEEK_INCLUDED_KM":-1,"WEEKEND_INCLUDED_KM":-1,"DAY_INCLUDED_KM":-1,"HOUR_INCLUDED_KM":80,"MINUTE_INCLUDED_KM":80}, "CS-J": {"id_fuel_type":-1,"FOUR_WEEKS_INCLUDED_KM":-1,"WEEK_INCLUDED_KM":-1,"WEEKEND_INCLUDED_KM":-1,"DAY_INCLUDED_KM":-1,"HOUR_INCLUDED_KM":80,"MINUTE_INCLUDED_KM":80}, "CS-N": {"id_fuel_type":-1,"FOUR_WEEKS_INCLUDED_KM":-1,"WEEK_INCLUDED_KM":-1,"WEEKEND_INCLUDED_KM":-1,"DAY_INCLUDED_KM":-1,"HOUR_INCLUDED_KM":80,"MINUTE_INCLUDED_KM":80}, "CS-D": {"id_fuel_type":-1,"FOUR_WEEKS_INCLUDED_KM":-1,"WEEK_INCLUDED_KM":-1,"WEEKEND_INCLUDED_KM":-1,"DAY_INCLUDED_KM":-1,"HOUR_INCLUDED_KM":80,"MINUTE_INCLUDED_KM":80}, "CS-B": {"id_fuel_type":-1,"FOUR_WEEKS_INCLUDED_KM":-1,"WEEK_INCLUDED_KM":-1,"WEEKEND_INCLUDED_KM":-1,"DAY_INCLUDED_KM":-1,"HOUR_INCLUDED_KM":80,"MINUTE_INCLUDED_KM":80}, "CS-G": {"id_fuel_type":-1,"FOUR_WEEKS_INCLUDED_KM":-1,"WEEK_INCLUDED_KM":-1,"WEEKEND_INCLUDED_KM":-1,"DAY_INCLUDED_KM":-1,"HOUR_INCLUDED_KM":80,"MINUTE_INCLUDED_KM":80}},"gps_range": {"android":"100","ios":"50"},"radius_mt": {"android":{"first":"1000","second":"2500","third":"15000"},"ios":{"first":"1000","second":"2500","third":"15000"}},"postgis": {"zoomLevelCom":"11","zoomLevelReg":"8,5"},"cacheExpireTimeInSecond": 3600,"markerRefresherInMinutes": 5,"maxNearVehicle": 50}]]]></value>
 	</object>
 	<propertyList>
 		<property>

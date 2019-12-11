@@ -91,7 +91,7 @@ public class GVScriptTester{
 	}
 	
 	private static void saveBuffers(HashMap<String,GVBuffer> environment) throws GVException, IOException {
-
+		
 		for(Entry<String,GVBuffer> temp: environment.entrySet()) {
 			String tempName = temp.getKey();
 			GVBuffer tempBuffer = temp.getValue();

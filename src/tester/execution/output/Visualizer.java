@@ -32,7 +32,13 @@ public class Visualizer {
 			output += "> Name = " + bufferName + "\n";
 			output += "\n";
 		}
-		String bufferObject = (String) gvbuffer.getObject();
+		String bufferObject;
+		try {
+			bufferObject = (String)gvbuffer.getObject();
+		} catch (Exception e) {
+			// object is Undefined
+			bufferObject = null;
+		}
 		output = printElement(output, bufferObject, "Object");
 		output += "\n";
 

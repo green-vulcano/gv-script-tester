@@ -1,5 +1,5 @@
 // example 1: Javascript
-
+/*
 var input = JSON.parse(new java.lang.String(data.getObject()));
 
 if(input.plate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
@@ -22,3 +22,7 @@ if(input.plate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	data.setProperty("TOTAL", "0");
 	
 }
+*/
+
+var payload = JSON.parse(new java.lang.String(data.getObject()));
+data.setObject(payload[0].GET_CATEGORY_JSON);

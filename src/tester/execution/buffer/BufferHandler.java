@@ -79,7 +79,16 @@ public class BufferHandler {
 		tester.execution.mapping.Object obj = new tester.execution.mapping.Object();
 		Value value = new Value();
 		//value.setvalue("<![CDATA[" + (String)gvbuffer.getObject() + "]]>");
-		value.setvalue((String)gvbuffer.getObject());
+		
+		String bufferObject;
+		try {
+			bufferObject = (String)gvbuffer.getObject();
+		} catch (Exception e) {
+			// object is Undefined
+			bufferObject = null;
+		}
+		value.setvalue(bufferObject);
+		
 		obj.setValue(value);
 		element.setObject(obj);
 		
