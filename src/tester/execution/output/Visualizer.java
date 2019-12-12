@@ -9,7 +9,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import it.greenvulcano.gvesb.buffer.GVBuffer;
 
@@ -82,13 +84,19 @@ public class Visualizer {
 	}
 
 	private static String formatJson(String s) {
-		if(s!=null && s!="" && s.contains("{") && s.contains("}")) {
-			try {
+
+		String data = s;
+		try {
+			Object json = new JSONTokener(data).nextValue();
+			if (json instanceof JSONObject) {
 				JSONObject jsonObject = new JSONObject(s);
 				return (jsonObject.toString(4));
-			} catch (Exception e) {
-				// is not a json :(
+			} else if (json instanceof JSONArray) {
+				JSONArray jsonArray = new JSONArray(s);
+				return (jsonArray.toString(4));
 			}
+		} catch (Exception e) {
+			// Not a Json :(
 		}
 		return s;
 	}
