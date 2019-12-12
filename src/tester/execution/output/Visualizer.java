@@ -2,6 +2,7 @@ package tester.execution.output;
 
 import static tester.execution.configuration.Paths.LOG_FILE_PATH;
 import static tester.settings.Constants.IMPROVE_JSON_VISUALIZATION;
+import static tester.execution.configuration.Paths.UNDEFINED_SCRIPT_TESTER_PROPERTY;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -37,7 +38,7 @@ public class Visualizer {
 			bufferObject = (String)gvbuffer.getObject();
 		} catch (Exception e) {
 			// object is Undefined
-			bufferObject = null;
+			bufferObject = UNDEFINED_SCRIPT_TESTER_PROPERTY;
 		}
 		output = printElement(output, bufferObject, "Object");
 		output += "\n";
@@ -68,6 +69,8 @@ public class Visualizer {
 				info = "is null";
 			} else if (element.equals("")){
 				info = "is empty";
+			} else if (element.equals(UNDEFINED_SCRIPT_TESTER_PROPERTY)){
+				info = "is undefined";
 			}
 			if(info==null) {
 				output += "> " + elementName + " = " + element + "\n";

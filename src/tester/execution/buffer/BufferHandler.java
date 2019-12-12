@@ -1,27 +1,22 @@
 package tester.execution.buffer;
 
-import static tester.execution.configuration.Paths.GV_OUTPUT_DATA_BUFFER_PATH;
+import static tester.execution.configuration.Paths.UNDEFINED_SCRIPT_TESTER_PROPERTY;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map.Entry;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import it.greenvulcano.gvesb.buffer.GVBuffer;
-import it.greenvulcano.gvesb.buffer.GVException;
 import tester.execution.mapping.Buffer;
 import tester.execution.mapping.Name;
 import tester.execution.mapping.Property;
 import tester.execution.mapping.PropertyList;
 import tester.execution.mapping.Value;
-
 public class BufferHandler {
 
 	public static String readBufferFromFile(GVBuffer gvbuffer, String propertyPath)
@@ -85,7 +80,7 @@ public class BufferHandler {
 			bufferObject = (String)gvbuffer.getObject();
 		} catch (Exception e) {
 			// object is Undefined
-			bufferObject = null;
+			bufferObject = UNDEFINED_SCRIPT_TESTER_PROPERTY;
 		}
 		value.setvalue(bufferObject);
 		
