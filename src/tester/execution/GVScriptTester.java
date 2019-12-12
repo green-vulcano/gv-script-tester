@@ -1,34 +1,25 @@
 package tester.execution;
 
-import static tester.execution.configuration.Paths.*;
+import static tester.execution.configuration.Paths.ENV_PROPERTIES_PATH_FIRST_PART;
+import static tester.execution.configuration.Paths.ENV_PROPERTIES_PATH_LAST_PART;
+import static tester.execution.configuration.Paths.GV_DATA_BUFFER_PROPERTIES_NAME;
+import static tester.execution.configuration.Paths.GV_OUTPUT_DATA_BUFFER_PATH;
+import static tester.execution.configuration.Paths.LOG_FILE_PATH;
 import static tester.settings.Constants.IS_FUNCTION;
 import static tester.settings.Constants.IS_JAVASCRIPT;
 import static tester.settings.Constants.SHOW_ALL_BUFFERS_IN_OUTPUT;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 
 import it.greenvulcano.gvesb.buffer.GVBuffer;
 import it.greenvulcano.gvesb.buffer.GVException;
 import tester.execution.buffer.BufferHandler;
 import tester.execution.engine.JavaScriptPerformer;
-import tester.execution.mapping.Buffer;
-import tester.execution.mapping.Name;
-import tester.execution.mapping.Property;
-import tester.execution.mapping.PropertyList;
-import tester.execution.mapping.Value;
 import tester.execution.output.Visualizer;
 import tester.groovy.GroovyScript;
 

@@ -1,6 +1,6 @@
 package tester.execution.buffer;
 
-import static tester.execution.configuration.Paths.UNDEFINED_SCRIPT_TESTER_PROPERTY;
+import static tester.execution.configuration.ScriptTesterProperties.UNDEFINED_SCRIPT_TESTER_PROPERTY;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -12,6 +12,4 @@ public interface Paths {
 	public static final String GV_OUTPUT_DATA_BUFFER_PATH = "output/";
 	
 	
-	public static final String UNDEFINED_SCRIPT_TESTER_PROPERTY = "[script-tester-property]:undefined";
-	
 }

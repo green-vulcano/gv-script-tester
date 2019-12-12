@@ -2,7 +2,7 @@ package tester.execution.output;
 
 import static tester.execution.configuration.Paths.LOG_FILE_PATH;
 import static tester.settings.Constants.IMPROVE_JSON_VISUALIZATION;
-import static tester.execution.configuration.Paths.UNDEFINED_SCRIPT_TESTER_PROPERTY;
+import static tester.execution.configuration.ScriptTesterProperties.UNDEFINED_SCRIPT_TESTER_PROPERTY;
 
 import java.io.IOException;
 import java.nio.file.Files;
