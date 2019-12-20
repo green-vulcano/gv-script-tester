@@ -8,7 +8,7 @@
 
 ### Installation
 
-The installation is very simple, just clone ***gv-script-tester***, open the project with your favourite IDE and than import [***gv-base***](https://github.com/green-vulcano/gv-engine) project in the *gv-script-tester* build path configuration.
+The installation is very simple, just clone [***gv-script-tester***](https://github.com/Luke460/gv-script-tester), open the project with your favourite IDE and than import [***gv-base***](https://github.com/green-vulcano/gv-engine) project in the *gv-script-tester* build path configuration.
 
 ### How to use
 
