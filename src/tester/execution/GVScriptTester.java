@@ -37,6 +37,8 @@ public class GVScriptTester{
 		try {
 			conditionReturn = executeTest(data, environment);
 			showBuffers(data, environment);
+			logBuffers(data, environment);
+			saveBuffers(environment);
 			if(IS_FUNCTION) {
 				System.out.println("> Returned value = " + conditionReturn);
 				System.out.println();
@@ -46,10 +48,12 @@ public class GVScriptTester{
 			String error = "> SCRIPT EXECUTION ERROR!\n> Error: ";
 			System.out.print(error);
 			e.printStackTrace(); 
+			logBuffers(data, environment);
 			Files.write(Paths.get(LOG_FILE_PATH), (error + e.getMessage()).getBytes(), StandardOpenOption.APPEND);
+			
+			System.out.println();
+			System.out.println("> Output buffers in " + LOG_FILE_PATH);
 		}
-		
-		saveBuffers(environment);
 
 	}
 
@@ -103,6 +107,7 @@ public class GVScriptTester{
 	
 	private static boolean executeTest(GVBuffer data, HashMap<String,GVBuffer> environment) throws Exception {
 		showBuffers(data, environment);
+		logBuffers(data, environment);
 		String lang;
 		if(IS_JAVASCRIPT) {
 			lang = "Javascript";
@@ -149,11 +154,13 @@ public class GVScriptTester{
 				Visualizer.printGVBuffer(environment.get(bufferName), bufferName);
 			}
 		}
-		
+
+	}
+	
+	private static void logBuffers(GVBuffer data, HashMap<String, GVBuffer> environment) throws IOException {
 		for(String bufferName: environment.keySet()) {
 			Visualizer.writeInTheLog(environment.get(bufferName),bufferName);
 		}
-
 	}
 
 	public static String getInputBufferName() {
