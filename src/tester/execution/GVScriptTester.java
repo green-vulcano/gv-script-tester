@@ -33,20 +33,24 @@ public class GVScriptTester{
 		Files.write(Paths.get(LOG_FILE_PATH), "".getBytes());
 		initializeTest(data, environment);
 		boolean conditionReturn;
+		boolean testError = false; 
 		try {
 			conditionReturn = executeTest(data, environment);
-			saveBuffers(environment);
 			showBuffers(data, environment);
 			if(IS_FUNCTION) {
-				System.out.println();
 				System.out.println("> Returned value = " + conditionReturn);
+				System.out.println();
 			}
 		} catch (Exception e) {
+			testError = true;
 			String error = "> SCRIPT EXECUTION ERROR!\n> Error: ";
 			System.out.print(error);
 			e.printStackTrace(); 
 			Files.write(Paths.get(LOG_FILE_PATH), (error + e.getMessage()).getBytes(), StandardOpenOption.APPEND);
 		}
+		
+		saveBuffers(environment);
+
 	}
 
 	////////////////////////////////////////////////
