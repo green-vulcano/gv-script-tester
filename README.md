@@ -38,6 +38,7 @@ Current buffer content      ->  scriptTester/ [DATA-Buffer.xml]
 
 To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-Buffer.xml* file for the buffer object and the related properties.
 After any execution, buffers are saved in xml format in the *output* folder.
+
 You can also setup ***xmlp properties*** by adding them in *scriptTester/xmlp.json*.
 
 TIPS: you can exclude a buffer setting its name as a void string (buffer name="").
