@@ -19,9 +19,8 @@ import java.util.Map.Entry;
 import it.greenvulcano.gvesb.buffer.GVBuffer;
 import it.greenvulcano.gvesb.buffer.GVException;
 import tester.execution.buffer.BufferHandler;
-import tester.execution.engine.JavaScriptPerformer;
+import tester.execution.engine.ScriptPerformer;
 import tester.execution.output.Visualizer;
-import tester.groovy.GroovyScript;
 
 public class GVScriptTester{
 	
@@ -33,7 +32,6 @@ public class GVScriptTester{
 		Files.write(Paths.get(LOG_FILE_PATH), "".getBytes());
 		initializeTest(data, environment);
 		boolean conditionReturn;
-		boolean testError = false; 
 		try {
 			conditionReturn = executeTest(data, environment);
 			showBuffers(data, environment);
@@ -44,7 +42,6 @@ public class GVScriptTester{
 				System.out.println();
 			}
 		} catch (Exception e) {
-			testError = true;
 			String error = "> SCRIPT EXECUTION ERROR!\n> Error: ";
 			System.out.print(error);
 			e.printStackTrace(); 
@@ -110,9 +107,9 @@ public class GVScriptTester{
 		logBuffers(data, environment);
 		String lang;
 		if(IS_JAVASCRIPT) {
-			lang = "Javascript";
+			lang = ScriptPerformer.Language.JavaScript.name();
 		} else {
-			lang = "Groovy";
+			lang = ScriptPerformer.Language.Groovy.name();
 		}
 		String function = "";
 		if(IS_FUNCTION) {
@@ -123,22 +120,21 @@ public class GVScriptTester{
 				"\n###############################################\n\n";
 		System.out.print(message);
 		Files.write(Paths.get(LOG_FILE_PATH), (message).getBytes(), StandardOpenOption.APPEND);
-		GroovyScript gs = null;
-		JavaScriptPerformer javascript= null;
+		ScriptPerformer scriptPerformer = null;
 		boolean conditionReturn = false;
-		if(!IS_JAVASCRIPT) {
-			gs = new GroovyScript();
+		if(!IS_JAVASCRIPT) { // is Groovy
+			scriptPerformer = new ScriptPerformer(ScriptPerformer.Language.Groovy);
 			if(IS_FUNCTION) {
-				conditionReturn = gs.executeGroovyCondition(data, environment);
+				conditionReturn = scriptPerformer.executeScriptCondition(data, environment);
 			} else {
-				gs.executeGroovyScript(data, environment);
+				scriptPerformer.executeScript(data, environment);
 			}
 		} else {
-			javascript = new JavaScriptPerformer();
+			scriptPerformer = new ScriptPerformer(ScriptPerformer.Language.JavaScript);
 			if(IS_FUNCTION) {
-				conditionReturn = javascript.executeJavaScriptCondition(data, environment);
+				conditionReturn = scriptPerformer.executeScriptCondition(data, environment);
 			} else {
-				javascript.executeJavaScript(data, environment);
+				scriptPerformer.executeScript(data, environment);
 			}
 		}
 
