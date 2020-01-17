@@ -12,7 +12,7 @@ The installation is very simple, just clone [***gv-script-tester***](https://git
 
 ### How to use
 
-To run a ***Javascript script***, write into *JavaScript.js* the script that you want to execute, set *IS_JAVASCRIPT = true* in *Constants.java*, than run GVScriptTester.java as a java application. (Try to run example 1: Javascript)
+To run a ***Javascript script***, write into *JavaScript.js* the script that you want to execute, set *LANGUAGE = "JavaScript"* in *Constants.java*, than run GVScriptTester.java as a java application. (Try to run example 1: Javascript)
 
 ```
 GVScriptTester          ->  tester/execution/ [GVScriptTester.java]
@@ -20,11 +20,11 @@ JavaScript body         ->  scriptTester/ [JavaScript.js]
 Javascript abilitation  ->  src/tester/settings/ [Constants.java]
 ```
 
-To run a ***Groovy script***, insert the script into the appropriate area in *GroovyScript.java*, set *IS_JAVASCRIPT = false*, than run GVScriptTester.java as a java application. (Try to run example 2 - Groovy script)
+To run a ***Groovy script***, write into *GroovyScript.groovy* the script that you want to execute, set *LANGUAGE = "Groovy"* in *Constants.java*, than run GVScriptTester.java as a java application. (Try to run example 2 - Groovy script)
 
 ```
 GVScriptTester          ->  tester/execution/ [GVScriptTester.java]
-Groovy Script body      ->  src/tester/groovy/ [GroovyScript.java]
+Groovy Script body      ->  scriptTester/ [GroovyScript.groovy]
 Groovy abilitation      ->  src/tester/settings/ [Constants.java]
 ```
 
@@ -36,7 +36,7 @@ To edit current (input) ***GVBuffer*** object or its properties, you have to edi
 Current buffer content      ->  scriptTester/ [DATA-Buffer.xml]
 ```
 
-To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-Buffer.xml* file for the buffer object and the related properties. To hide environment buffers on the output you can set *SHOW_ALL_BUFFERS_IN_OUTPUT = false*. 
+To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-Buffer.xml* file for the buffer object and the related properties.
 After any execution, buffers are saved in xml format in the *output* folder.
 
 TIPS: you can exclude a buffer setting its name as a void string (buffer name="").
@@ -48,7 +48,6 @@ Additional buffer object      ->  scriptTester/ [ENV-2-Buffer.xml]
            . . .                             . . .
 Environment buffers log       ->  scriptTester/ [environmentLog.txt]
 Buffers after execution (xml) ->  output/ [BufferName.xml]
-SHOW_ALL_BUFFERS_IN_OUTPUT    ->  src/tester/settings/ [Constants.java]
 ```
 
 To edit execution ***GV-SriptTester*** settings, edit the file *Constants.java*.
@@ -110,7 +109,7 @@ if(input.plate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 		<property>
 			<name>PRIVATE_CAR_PLATE</name>
 			<value><![CDATA[AD123CD]]></value>
-		</property>
+		</property>Editing gv-script-tester_README.md at master · Luke460_gv-script-tester
 	</propertyList>
 </buffer>
 ```
@@ -190,33 +189,25 @@ if(input.plate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 
 #### Example 2: Groovy
 
-***TIPS***: remember to set *IS_JAVASCRIPT = false*
+***TIPS***: remember to set *LANGUAGE = "Groovy"*
 
-***Scripts*** -> *src/tester/groovy/GroovyScript.java*:
+***Script*** -> *scriptTester/GroovyScript.groovy*:
 ```
-public void executeGroovyScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
+String inputJsonString = data.getObject().toString();
 
-	///////////////////////////////  SCRIPT AREA  ///////////////////////////////
+org.json.JSONObject inputJson = new org.json.JSONObject(inputJsonString);
 
-	String inputJsonString = data.getObject().toString();
-		
-	org.json.JSONObject inputJson = new org.json.JSONObject(inputJsonString);
-		
-	int number = inputJson.getJSONObject("player").getInt("number");
-	String name = inputJson.getJSONObject("player").getString("name");
-	String surname = inputJson.getJSONObject("player").getString("surname");
-		
-	String code = (name + surname + number).toUpperCase();
-	
-	org.json.JSONObject outputJson = new org.json.JSONObject();
-	outputJson.put("number", number);
-	outputJson.put("code", code);
-		
-	data.setProperty("OUTPUT_JSON", outputJson.toString());	
+int number = inputJson.getJSONObject("player").getInt("number");
+String name = inputJson.getJSONObject("player").getString("name");
+String surname = inputJson.getJSONObject("player").getString("surname");
 
-	/////////////////////////////////////////////////////////////////////////////
+String code = (name + surname + number).toUpperCase();
 
-}
+org.json.JSONObject outputJson = new org.json.JSONObject();
+outputJson.put("number", number);
+outputJson.put("code", code);
+
+data.setProperty("OUTPUT_JSON", outputJson.toString());	
 ```
 ***Data buffer*** -> *scriptTester/DATA-Buffer.xml*:
 ```
@@ -283,18 +274,9 @@ Have fun making this simple example work!
 ***TIPS***: remember to set *IS_FUNCTION = true*
 
 ```
-public boolean executeGroovyCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
-
-	/////////////////////////// CONDITION SCRIPT AREA  ///////////////////////////
-
-	// example 3 - Groovy script with boolean return
-	if(environment.get("test-buffer").getProperty("example").equals("hello!")) {
-		return true;
-	} else {
-		return false;
-	}		
-
-	/////////////////////////////////////////////////////////////////////////////
-
+if(environment.get("test-buffer").getProperty("example").equals("hello!")) {
+	return true;
+} else {
+	return false;
 }	
 ```
