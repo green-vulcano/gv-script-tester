@@ -11,7 +11,7 @@ import javax.script.*;
 public class ScriptPerformer {
 	
 	public enum Language {
-		Groovy, JavaScript
+		Groovy, JavaScript, Undefined
 	}
 	
 	private ScriptPerformer.Language lang;

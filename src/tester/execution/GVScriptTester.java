@@ -6,8 +6,7 @@ import static tester.execution.configuration.Paths.GV_DATA_BUFFER_PROPERTIES_NAM
 import static tester.execution.configuration.Paths.GV_OUTPUT_DATA_BUFFER_PATH;
 import static tester.execution.configuration.Paths.LOG_FILE_PATH;
 import static tester.settings.Constants.IS_FUNCTION;
-import static tester.settings.Constants.IS_JAVASCRIPT;
-import static tester.settings.Constants.SHOW_ALL_BUFFERS_IN_OUTPUT;
+import static tester.settings.Constants.LANGUAGE;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,7 +22,7 @@ import tester.execution.engine.ScriptPerformer;
 import tester.execution.output.Visualizer;
 
 public class GVScriptTester{
-	
+
 	private static String inputBufferName = "input";
 
 	public static void main(String[] args) throws Exception {
@@ -47,7 +46,7 @@ public class GVScriptTester{
 			e.printStackTrace(); 
 			logBuffers(data, environment);
 			Files.write(Paths.get(LOG_FILE_PATH), (error + e.getMessage()).getBytes(), StandardOpenOption.APPEND);
-			
+
 			System.out.println();
 			System.out.println("> Output buffers in " + LOG_FILE_PATH);
 		}
@@ -85,9 +84,9 @@ public class GVScriptTester{
 		}
 
 	}
-	
+
 	private static void saveBuffers(HashMap<String,GVBuffer> environment) throws GVException, IOException {
-		
+
 		for(Entry<String,GVBuffer> temp: environment.entrySet()) {
 			String tempName = temp.getKey();
 			GVBuffer tempBuffer = temp.getValue();
@@ -101,15 +100,17 @@ public class GVScriptTester{
 		}
 
 	}
-	
+
 	private static boolean executeTest(GVBuffer data, HashMap<String,GVBuffer> environment) throws Exception {
 		showBuffers(data, environment);
 		logBuffers(data, environment);
 		String lang;
-		if(IS_JAVASCRIPT) {
+		if(isJavaScript()) {
 			lang = ScriptPerformer.Language.JavaScript.name();
-		} else {
+		} else if(isGroovy()) {
 			lang = ScriptPerformer.Language.Groovy.name();
+		} else {
+			lang = ScriptPerformer.Language.Undefined.name();;
 		}
 		String function = "";
 		if(IS_FUNCTION) {
@@ -122,37 +123,43 @@ public class GVScriptTester{
 		Files.write(Paths.get(LOG_FILE_PATH), (message).getBytes(), StandardOpenOption.APPEND);
 		ScriptPerformer scriptPerformer = null;
 		boolean conditionReturn = false;
-		if(!IS_JAVASCRIPT) { // is Groovy
+		if(isGroovy()) { // is Groovy
 			scriptPerformer = new ScriptPerformer(ScriptPerformer.Language.Groovy);
 			if(IS_FUNCTION) {
 				conditionReturn = scriptPerformer.executeScriptCondition(data, environment);
 			} else {
 				scriptPerformer.executeScript(data, environment);
 			}
-		} else {
+		} else if (isJavaScript()){
 			scriptPerformer = new ScriptPerformer(ScriptPerformer.Language.JavaScript);
 			if(IS_FUNCTION) {
 				conditionReturn = scriptPerformer.executeScriptCondition(data, environment);
 			} else {
 				scriptPerformer.executeScript(data, environment);
 			}
+		} else {
+			throw new IllegalArgumentException("Undefined script language!");
 		}
 
 		return conditionReturn;
 	}
 
+	private static boolean isJavaScript() {
+		return LANGUAGE.toLowerCase().equals(ScriptPerformer.Language.JavaScript.name().toLowerCase());
+	}
+
+	private static boolean isGroovy() {
+		return LANGUAGE.toLowerCase().equals(ScriptPerformer.Language.Groovy.name().toLowerCase());
+	}
+
 	private static void showBuffers(GVBuffer data, HashMap<String, GVBuffer> environment) throws IOException {
-		
-		if(!SHOW_ALL_BUFFERS_IN_OUTPUT) {
-			Visualizer.printGVBuffer(data, null);	
-		} else {	
-			for(String bufferName: environment.keySet()) {
-				Visualizer.printGVBuffer(environment.get(bufferName), bufferName);
-			}
+
+		for(String bufferName: environment.keySet()) {
+			Visualizer.printGVBuffer(environment.get(bufferName), bufferName);
 		}
 
 	}
-	
+
 	private static void logBuffers(GVBuffer data, HashMap<String, GVBuffer> environment) throws IOException {
 		for(String bufferName: environment.keySet()) {
 			Visualizer.writeInTheLog(environment.get(bufferName),bufferName);
