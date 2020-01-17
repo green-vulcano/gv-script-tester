@@ -10,7 +10,7 @@ public interface Paths {
 	public static final String GV_DATA_BUFFER_PROPERTIES_NAME = "scriptTester/DATA-Buffer.xml";
 	public static final String ENV_PROPERTIES_PATH_FIRST_PART = "scriptTester/ENV-";
 	public static final String ENV_PROPERTIES_PATH_LAST_PART = "-Buffer.xml";
-	public static final String XMLP_PROPERTIES = "scriptTester/xmlp";
+	public static final String XMLP_PROPERTIES = "scriptTester/xmlp.json";
 	public static final String GV_OUTPUT_DATA_BUFFER_PATH = "output/";
 	
 	
