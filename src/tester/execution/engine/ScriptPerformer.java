@@ -20,7 +20,7 @@ public class ScriptPerformer {
 		this.lang = lang;
 	}
 
-	public void executeScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
+	public boolean executeScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
 
 		ScriptEngine engine = setupJsEngine(data, environment);
 
@@ -32,16 +32,6 @@ public class ScriptPerformer {
 			path = JAVASCRIPT_FILE_PATH;
 		}
 		String fileBody = new String(Files.readAllBytes(Paths.get(path)));
-		engine.eval(fileBody);
-
-	}
-
-	public boolean executeScriptCondition(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
-
-		ScriptEngine engine = setupJsEngine(data, environment);
-
-		// evaluate JavaScript code from given file
-		String fileBody = new String(Files.readAllBytes(Paths.get(JAVASCRIPT_FILE_PATH)));
 		return (boolean) engine.eval(fileBody);
 
 	}

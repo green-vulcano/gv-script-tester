@@ -126,14 +126,14 @@ public class GVScriptTester{
 		if(isGroovy()) { // is Groovy
 			scriptPerformer = new ScriptPerformer(ScriptPerformer.Language.Groovy);
 			if(IS_FUNCTION) {
-				conditionReturn = scriptPerformer.executeScriptCondition(data, environment);
+				conditionReturn = scriptPerformer.executeScript(data, environment);
 			} else {
 				scriptPerformer.executeScript(data, environment);
 			}
 		} else if (isJavaScript()){
 			scriptPerformer = new ScriptPerformer(ScriptPerformer.Language.JavaScript);
 			if(IS_FUNCTION) {
-				conditionReturn = scriptPerformer.executeScriptCondition(data, environment);
+				conditionReturn = scriptPerformer.executeScript(data, environment);
 			} else {
 				scriptPerformer.executeScript(data, environment);
 			}
