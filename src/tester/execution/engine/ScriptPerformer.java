@@ -2,6 +2,7 @@ package tester.execution.engine;
 
 import static tester.execution.configuration.Paths.*;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -11,6 +12,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.script.*;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ScriptPerformer {
 
@@ -37,6 +42,7 @@ public class ScriptPerformer {
 		}
 		String fileBody = new String(Files.readAllBytes(Paths.get(path)));
 		fileBody = addPropertyDeclaration(fileBody);
+		fileBody = addXmlpDeclaration(fileBody);
 		Object r = engine.eval(fileBody);
 		if(r!=null) {
 			return (boolean)r;
@@ -61,7 +67,7 @@ public class ScriptPerformer {
 	}
 
 	private String addPropertyDeclaration(String fileBody) {
-		
+
 		List<String> allMatches = new ArrayList<String>();
 		// \Q@{{\E.*\Q}}\E
 		String pattern = Pattern.quote("@{{") + ".*" + Pattern.quote("}}");
@@ -76,7 +82,58 @@ public class ScriptPerformer {
 			fileBody = fileBody.replace(s,newString);
 		}
 		return fileBody;
+
+	}
+
+	private String addXmlpDeclaration(String fileBody) {
+
+		List<String> allMatches = new ArrayList<String>();
+		// \Q@{{\E.*\Q}}\E
+		String pattern = Pattern.quote("xmlp{{") + ".*" + Pattern.quote("}}");
+		Matcher m = Pattern.compile(pattern)
+				.matcher(fileBody);
+		while (m.find()) {
+			allMatches.add(m.group());
+		}
 		
+		HashMap<String,String> xmlp = readXMLP();
+		
+		if(xmlp==null) return fileBody;
+
+		int count = 0;
+		
+		for(String s:allMatches) {
+			String key = s.substring(6, s.length()-2);
+			String newString = xmlp.get(key);
+			if(newString!=null) {
+				if(count==0) {
+					System.out.println("> XMLP Properties replaced:");
+				}
+				System.out.println("    > " + key + " = " + newString);
+				fileBody = fileBody.replace(s,newString);
+				count ++;
+			}
+		}
+		
+		if(count>0) {
+			System.out.println();
+		}
+		
+		return fileBody;
+
+	}
+
+	private HashMap<String,String> readXMLP(){
+		try {
+			String fileBody = new String(Files.readAllBytes(Paths.get(XMLP_PROPERTIES)));
+			return new ObjectMapper().readValue(fileBody, HashMap.class);
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
