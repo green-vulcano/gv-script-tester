@@ -4,18 +4,22 @@ import static tester.execution.configuration.Paths.*;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.script.*;
 
 public class ScriptPerformer {
-	
+
 	public enum Language {
 		Groovy, JavaScript, Undefined
 	}
-	
+
 	private ScriptPerformer.Language lang;
-	
+
 	public ScriptPerformer(ScriptPerformer.Language lang) {
 		this.lang = lang;
 	}
@@ -32,7 +36,13 @@ public class ScriptPerformer {
 			path = JAVASCRIPT_FILE_PATH;
 		}
 		String fileBody = new String(Files.readAllBytes(Paths.get(path)));
-		return (boolean) engine.eval(fileBody);
+		fileBody = addPropertyDeclaration(fileBody);
+		Object r = engine.eval(fileBody);
+		if(r!=null) {
+			return (boolean)r;
+		} else {
+			return true;
+		}
 
 	}
 
@@ -49,4 +59,24 @@ public class ScriptPerformer {
 		engine.put("environment", environment);
 		return engine;
 	}
+
+	private String addPropertyDeclaration(String fileBody) {
+		
+		List<String> allMatches = new ArrayList<String>();
+		// \Q@{{\E.*\Q}}\E
+		String pattern = Pattern.quote("@{{") + ".*" + Pattern.quote("}}");
+		Matcher m = Pattern.compile(pattern)
+				.matcher(fileBody);
+		while (m.find()) {
+			allMatches.add(m.group());
+		}
+
+		for(String s:allMatches) {
+			String newString = "data.getProperty(\"" + s.substring(3, s.length()-2) + "\")";
+			fileBody = fileBody.replace(s,newString);
+		}
+		return fileBody;
+		
+	}
+
 }
