@@ -2,7 +2,7 @@
 
 ### Overview
 
-**GV Script Tester** is an interactive environment where you can quickly run and debug a *Javascript/Groovy* script using the [***gv-engine***](https://github.com/green-vulcano/gv-engine) java classes. By setting up gvbuffers with the related properties it can execute the script by showing the status of the involved gvbuffers before and after the script execution.
+**GV Script Tester** is an interactive environment where you can quickly run and debug a *Javascript/Groovy* script using the [***gv-engine***](https://github.com/green-vulcano/gv-engine) java classes. By setting up the gvbuffers with the related properties, it can execute the script by showing the status of the involved gvbuffers before and after the script execution.
 
 ![alt text](https://raw.githubusercontent.com/Luke460/gv-script-tester/master/gv-script-tester-eclipse.png)
 
@@ -31,13 +31,14 @@ Groovy abilitation      ->  src/tester/settings/ [Constants.java]
     Note: If your script is a function with a boolean return, set IS_CONDITION = true 
     (Try to run example 3 - Groovy script with boolean return)
 
-To edit current (input) ***GVBuffer*** object or its properties, you have to edit the file *DATA-Buffer.xml*.
+To edit the current (input) ***GVBuffer*** object or its properties, you have to edit the file *DATA-Buffer.xml*.
 ```
 Current buffer content      ->  scriptTester/ [DATA-Buffer.xml]
 ```
 
 To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-Buffer.xml* file for the buffer object and the related properties.
 After any execution, buffers are saved in xml format in the *output* folder.
+
 You can also setup ***xmlp properties*** by adding them in *scriptTester/xmlp.json*.
 
 TIPS: you can exclude a buffer setting its name as a void string (buffer name="").
