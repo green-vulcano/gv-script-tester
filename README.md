@@ -31,7 +31,7 @@ Groovy abilitation      ->  src/tester/settings/ [Constants.java]
     Note: If your script is a function with a boolean return, set IS_CONDITION = true 
     (Try to run example 3 - Groovy script with boolean return)
 
-To edit current (input) ***GVBuffer*** object or its properties, you have to edit the file *DATA-Buffer.xml*.
+To edit the current (input) ***GVBuffer*** object or its properties, you have to edit the file *DATA-Buffer.xml*.
 ```
 Current buffer content      ->  scriptTester/ [DATA-Buffer.xml]
 ```
