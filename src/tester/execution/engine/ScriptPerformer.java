@@ -2,25 +2,29 @@ package tester.execution.engine;
 
 import static tester.execution.configuration.Paths.*;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.script.*;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import static tester.settings.Constants.IS_FUNCTION;
 
 public class ScriptPerformer {
 
 	public enum Language {
 		Groovy, JavaScript, Undefined
+	}
+	
+	public enum PropertyType {
+		GV, XMLP
 	}
 
 	private ScriptPerformer.Language lang;
@@ -41,10 +45,10 @@ public class ScriptPerformer {
 			path = JAVASCRIPT_FILE_PATH;
 		}
 		String fileBody = new String(Files.readAllBytes(Paths.get(path)));
-		fileBody = addPropertyDeclaration(fileBody);
-		fileBody = addXmlpDeclaration(fileBody);
+		fileBody = injectProperties(fileBody, data, ScriptPerformer.PropertyType.GV);
+		fileBody = injectProperties(fileBody, data, ScriptPerformer.PropertyType.XMLP);
 		Object r = engine.eval(fileBody);
-		if(r!=null) {
+		if(IS_FUNCTION) {
 			return (boolean)r;
 		} else {
 			return true;
@@ -65,52 +69,46 @@ public class ScriptPerformer {
 		engine.put("environment", environment);
 		return engine;
 	}
-
-	private String addPropertyDeclaration(String fileBody) {
+	
+	private String injectProperties(String fileBody, it.greenvulcano.gvesb.buffer.GVBuffer data, ScriptPerformer.PropertyType propertyType) {
 
 		List<String> allMatches = new ArrayList<String>();
-		// \Q@{{\E.*\Q}}\E
-		String pattern = Pattern.quote("@{{") + ".*" + Pattern.quote("}}");
+
+		String pattern = null;
+		HashMap<String,String> xmlp = null;
+		if(propertyType.equals(ScriptPerformer.PropertyType.XMLP)) {
+			pattern = Pattern.quote("xmlp{{") + ".*" + Pattern.quote("}}");
+			xmlp = readXMLP();
+		} else if(propertyType.equals(ScriptPerformer.PropertyType.GV)) {
+			pattern = Pattern.quote("@{{") + ".*" + Pattern.quote("}}");
+		}
+		
 		Matcher m = Pattern.compile(pattern)
 				.matcher(fileBody);
 		while (m.find()) {
 			allMatches.add(m.group());
 		}
-
-		for(String s:allMatches) {
-			String newString = "data.getProperty(\"" + s.substring(3, s.length()-2) + "\")";
-			fileBody = fileBody.replace(s,newString);
-		}
-		return fileBody;
-
-	}
-
-	private String addXmlpDeclaration(String fileBody) {
-
-		List<String> allMatches = new ArrayList<String>();
-		// \Q@{{\E.*\Q}}\E
-		String pattern = Pattern.quote("xmlp{{") + ".*" + Pattern.quote("}}");
-		Matcher m = Pattern.compile(pattern)
-				.matcher(fileBody);
-		while (m.find()) {
-			allMatches.add(m.group());
-		}
-		
-		HashMap<String,String> xmlp = readXMLP();
-		
-		if(xmlp==null) return fileBody;
 
 		int count = 0;
+		HashSet<String> keys = new HashSet<>();
 		
 		for(String s:allMatches) {
-			String key = s.substring(6, s.length()-2);
-			String newString = xmlp.get(key);
-			if(newString!=null) {
-				if(count==0) {
-					System.out.println("> XMLP Properties replaced:");
-				}
-				System.out.println("    > " + key + " = " + newString);
-				fileBody = fileBody.replace(s,newString);
+			String key = null;
+			String value = null;
+			if(propertyType.equals(ScriptPerformer.PropertyType.XMLP)) {
+				key = s.substring(6, s.length()-2);
+				value = xmlp.get(key);
+			} else if(propertyType.equals(ScriptPerformer.PropertyType.GV)) {
+				key = s.substring(3, s.length()-2);
+				value = data.getProperty(key);
+			}
+
+			if(value!=null && !keys.contains(key)) {
+				
+				printReplacement(count, s, value, propertyType);
+				fileBody = fileBody.replace(s,value);
+				
+				keys.add(key);
 				count ++;
 			}
 		}
@@ -123,6 +121,14 @@ public class ScriptPerformer {
 
 	}
 
+	private void printReplacement(int count, String replacedString, String value, ScriptPerformer.PropertyType propertyType) {
+		if(count==0) {
+			System.out.println("> " + propertyType + " Properties replaced:");
+		}
+		System.out.println("    > " + replacedString + " = " + value);
+	}
+
+	@SuppressWarnings("unchecked")
 	private HashMap<String,String> readXMLP(){
 		try {
 			String fileBody = new String(Files.readAllBytes(Paths.get(XMLP_PROPERTIES)));
