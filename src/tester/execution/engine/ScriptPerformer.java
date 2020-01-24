@@ -22,7 +22,7 @@ public class ScriptPerformer {
 	public enum Language {
 		Groovy, JavaScript, Undefined
 	}
-	
+
 	public enum PropertyType {
 		GV, XMLP
 	}
@@ -69,7 +69,7 @@ public class ScriptPerformer {
 		engine.put("environment", environment);
 		return engine;
 	}
-	
+
 	private String injectProperties(String fileBody, it.greenvulcano.gvesb.buffer.GVBuffer data, ScriptPerformer.PropertyType propertyType) {
 
 		List<String> allMatches = new ArrayList<String>();
@@ -82,7 +82,7 @@ public class ScriptPerformer {
 		} else if(propertyType.equals(ScriptPerformer.PropertyType.GV)) {
 			pattern = Pattern.quote("@{{") + ".*" + Pattern.quote("}}");
 		}
-		
+
 		Matcher m = Pattern.compile(pattern)
 				.matcher(fileBody);
 		while (m.find()) {
@@ -91,7 +91,7 @@ public class ScriptPerformer {
 
 		int count = 0;
 		HashSet<String> keys = new HashSet<>();
-		
+
 		for(String s:allMatches) {
 			String key = null;
 			String value = null;
@@ -103,20 +103,22 @@ public class ScriptPerformer {
 				value = data.getProperty(key);
 			}
 
-			if(value!=null && !keys.contains(key)) {
-				
-				printReplacement(count, s, value, propertyType);
-				fileBody = fileBody.replace(s,value);
-				
+			if(!keys.contains(key)) {
+				if(value!=null) {
+					printReplacement(count, s, value, propertyType);
+					fileBody = fileBody.replace(s,value);
+				} else {
+					printReplacementError(count, s, value, propertyType);
+				}
 				keys.add(key);
 				count ++;
 			}
 		}
-		
+
 		if(count>0) {
 			System.out.println();
 		}
-		
+
 		return fileBody;
 
 	}
@@ -128,13 +130,19 @@ public class ScriptPerformer {
 		System.out.println("    > " + replacedString + " = " + value);
 	}
 
+	private void printReplacementError(int count, String replacedString, String value, ScriptPerformer.PropertyType propertyType) {
+		if(count==0) {
+			System.out.println("> " + propertyType + " Properties replaced:");
+		}
+		System.out.println("    > WARNING: unable to replace " + replacedString);
+	}
+
 	@SuppressWarnings("unchecked")
 	private HashMap<String,String> readXMLP(){
 		try {
 			String fileBody = new String(Files.readAllBytes(Paths.get(XMLP_PROPERTIES)));
 			return new ObjectMapper().readValue(fileBody, HashMap.class);
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
