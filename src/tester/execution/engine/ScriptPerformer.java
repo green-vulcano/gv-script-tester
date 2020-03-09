@@ -35,7 +35,7 @@ public class ScriptPerformer {
 
 	public boolean executeScript(it.greenvulcano.gvesb.buffer.GVBuffer data, HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) throws Exception {
 
-		ScriptEngine engine = setupJsEngine(data, environment);
+		ScriptEngine engine = setupEngine(data, environment);
 
 		// evaluate JavaScript code from given file
 		String path = null;
@@ -58,7 +58,7 @@ public class ScriptPerformer {
 
 	}
 
-	private ScriptEngine setupJsEngine(it.greenvulcano.gvesb.buffer.GVBuffer data,
+	private ScriptEngine setupEngine(it.greenvulcano.gvesb.buffer.GVBuffer data,
 			HashMap<String, it.greenvulcano.gvesb.buffer.GVBuffer> environment) {
 		// create a script engine manager
 		ScriptEngineManager factory = new ScriptEngineManager();
