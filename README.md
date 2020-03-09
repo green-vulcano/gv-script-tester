@@ -283,3 +283,13 @@ if(environment.get("test-buffer").getProperty("example").equals("hello!")) {
 	return false;
 }	
 ```
+#### Example 4: Python
+```
+# example 4: ToUpper
+
+text = data.getObject()
+data.setProperty("input",text)
+outputText = text.upper()
+data.setProperty("output",outputText)
+data.setObject(outputText)
+```
