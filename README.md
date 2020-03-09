@@ -2,7 +2,7 @@
 
 ### Overview
 
-**GV Script Tester** is an interactive environment where you can quickly run and debug a *Javascript/Groovy* script using the [***gv-engine***](https://github.com/green-vulcano/gv-engine) java classes. By setting up the gvbuffers with the related properties, it can execute the script by showing the status of the involved gvbuffers before and after the script execution.
+**GV Script Tester** is an interactive environment where you can quickly run and debug a *Javascript/Groovy/Python* script using the [***gv-engine***](https://github.com/green-vulcano/gv-engine) java classes. By setting up the gvbuffers with the related properties, it can execute the script by showing the status of the involved gvbuffers before and after the script execution.
 
 ![alt text](https://raw.githubusercontent.com/Luke460/gv-script-tester/master/gv-script-tester-eclipse.png)
 
@@ -16,7 +16,7 @@ To run a ***Javascript script***, write into *JavaScript.js* the script that you
 
 ```
 GVScriptTester          ->  tester/execution/ [GVScriptTester.java]
-JavaScript body         ->  scriptTester/ [JavaScript.js]
+JavaScript body         ->  scriptTester/script/ [JavaScript.js]
 Javascript abilitation  ->  src/tester/settings/ [Constants.java]
 ```
 
@@ -24,7 +24,7 @@ To run a ***Groovy script***, write into *GroovyScript.groovy* the script that y
 
 ```
 GVScriptTester          ->  tester/execution/ [GVScriptTester.java]
-Groovy Script body      ->  scriptTester/ [GroovyScript.groovy]
+Groovy Script body      ->  scriptTester/script/ [GroovyScript.groovy]
 Groovy abilitation      ->  src/tester/settings/ [Constants.java]
 ```
 
@@ -33,22 +33,22 @@ Groovy abilitation      ->  src/tester/settings/ [Constants.java]
 
 To edit the current (input) ***GVBuffer*** object or its properties, you have to edit the file *DATA-Buffer.xml*.
 ```
-Current buffer content      ->  scriptTester/ [DATA-Buffer.xml]
+Current buffer content      ->  scriptTester/buffer/ [DATA-Buffer.xml]
 ```
 
 To add an ***additional buffer***, you have to add an additional *ENV-[buffer number]-Buffer.xml* file for the buffer object and the related properties.
 After any execution, buffers are saved in xml format in the *output* folder.
 
-You can also setup ***xmlp properties*** by adding them in *scriptTester/xmlp.json*.
+You can also setup ***xmlp properties*** by adding them in *scriptTester/buffer/xmlp.json*.
 
 TIPS: you can exclude a buffer setting its name as a void string (buffer name="").
 
 ```
-Current buffer object         ->  scriptTester/ [DATA-Buffer.xml]
-Additional buffer object      ->  scriptTester/ [ENV-1-Buffer.xml]
-Additional buffer object      ->  scriptTester/ [ENV-2-Buffer.xml]
+Current buffer object         ->  scriptTester/buffer/ [DATA-Buffer.xml]
+Additional buffer object      ->  scriptTester/buffer/ [ENV-1-Buffer.xml]
+Additional buffer object      ->  scriptTester/buffer/ [ENV-2-Buffer.xml]
            . . .                             . . .
-XMLP Properties               ->  scriptTester/ [xmlp.json]
+XMLP Properties               ->  scriptTester/buffer/ [xmlp.json]
 Environment buffers log       ->  scriptTester/ [environmentLog.txt]
 Buffers after execution (xml) ->  output/ [BufferName.xml]
 ```
@@ -61,7 +61,7 @@ GV-SriptTester settings     ->  src/tester/settings/ [Constants.java]
 
 ### Examples
 #### Example 1: Javascript
-***Script*** -> *scriptTester/JavaScript.js*:
+***Script*** -> *scriptTester/script/JavaScript.js*:
 ```
 // example 1: Javascript
 
@@ -88,7 +88,7 @@ if(input.plate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	
 }
 ```
-***Data buffer*** -> *scriptTester/DATA-Buffer.xml*:
+***Data buffer*** -> *scriptTester/buffer/DATA-Buffer.xml*:
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE note SYSTEM "buffer.dtd">
@@ -116,7 +116,7 @@ if(input.plate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	</propertyList>
 </buffer>
 ```
-***Test buffer*** *(just another buffer)* -> *scriptTester/ENV-1-Buffer.xml*:
+***Test buffer*** *(just another buffer)* -> *scriptTester/buffer/ENV-1-Buffer.xml*:
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE note SYSTEM "buffer.dtd">
@@ -194,7 +194,7 @@ if(input.plate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 
 ***TIPS***: remember to set *LANGUAGE = "Groovy"*
 
-***Script*** -> *scriptTester/GroovyScript.groovy*:
+***Script*** -> *scriptTester/script/GroovyScript.groovy*:
 ```
 String inputJsonString = data.getObject().toString();
 
@@ -212,7 +212,7 @@ outputJson.put("code", code);
 
 data.setProperty("OUTPUT_JSON", outputJson.toString());	
 ```
-***Data buffer*** -> *scriptTester/DATA-Buffer.xml*:
+***Data buffer*** -> *scriptTester/buffer/DATA-Buffer.xml*:
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE note SYSTEM "buffer.dtd">
