@@ -131,7 +131,7 @@ if(input.plate.equals(data.getProperty("PRIVATE_CAR_PLATE"))){
 	</propertyList>
 </buffer>
 ```
-***Execution output:***
+***Execution output:*** (this example is preconfigured, so you can just run GVScriptTester.java as a java application)
 ```
 ---------------- GV BUFFER --------------------
 
