@@ -104,41 +104,33 @@ public class GVScriptTester{
 	private static boolean executeTest(GVBuffer data, HashMap<String,GVBuffer> environment) throws Exception {
 		showBuffers(data, environment);
 		logBuffers(data, environment);
-		String lang;
+		ScriptPerformer.Language lang;
 		if(isJavaScript()) {
-			lang = ScriptPerformer.Language.JavaScript.name();
+			lang = ScriptPerformer.Language.JavaScript;
 		} else if(isGroovy()) {
-			lang = ScriptPerformer.Language.Groovy.name();
+			lang = ScriptPerformer.Language.Groovy;
+		} else if(isPython()) {
+			lang = ScriptPerformer.Language.python;
 		} else {
-			lang = ScriptPerformer.Language.Undefined.name();;
+			throw new IllegalArgumentException("Undefined script language!");
 		}
 		String function = "";
 		if(IS_FUNCTION) {
 			function = " function";
 		}
 		String message = "###############################################\n\n" + 
-				"         SCRIPT EXECUTION (" + lang + function + ")\n" + 
+				"         SCRIPT EXECUTION (" + lang.name() + function + ")\n" + 
 				"\n###############################################\n\n";
 		System.out.print(message);
 		Files.write(Paths.get(LOG_FILE_PATH), (message).getBytes(), StandardOpenOption.APPEND);
 		ScriptPerformer scriptPerformer = null;
 		boolean conditionReturn = false;
-		if(isGroovy()) { // is Groovy
-			scriptPerformer = new ScriptPerformer(ScriptPerformer.Language.Groovy);
-			if(IS_FUNCTION) {
-				conditionReturn = scriptPerformer.executeScript(data, environment);
-			} else {
-				scriptPerformer.executeScript(data, environment);
-			}
-		} else if (isJavaScript()){
-			scriptPerformer = new ScriptPerformer(ScriptPerformer.Language.JavaScript);
-			if(IS_FUNCTION) {
-				conditionReturn = scriptPerformer.executeScript(data, environment);
-			} else {
-				scriptPerformer.executeScript(data, environment);
-			}
+			
+		scriptPerformer = new ScriptPerformer(lang);
+		if(IS_FUNCTION) {
+			conditionReturn = scriptPerformer.executeScript(data, environment);
 		} else {
-			throw new IllegalArgumentException("Undefined script language!");
+			scriptPerformer.executeScript(data, environment);
 		}
 
 		return conditionReturn;
@@ -150,6 +142,10 @@ public class GVScriptTester{
 
 	private static boolean isGroovy() {
 		return LANGUAGE.toLowerCase().equals(ScriptPerformer.Language.Groovy.name().toLowerCase());
+	}
+	
+	private static boolean isPython() {
+		return LANGUAGE.toLowerCase().equals(ScriptPerformer.Language.python.name().toLowerCase());
 	}
 
 	private static void showBuffers(GVBuffer data, HashMap<String, GVBuffer> environment) throws IOException {

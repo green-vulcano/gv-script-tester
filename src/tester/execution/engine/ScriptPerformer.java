@@ -20,7 +20,7 @@ import static tester.settings.Constants.IS_FUNCTION;
 public class ScriptPerformer {
 
 	public enum Language {
-		Groovy, JavaScript, Undefined
+		Groovy, JavaScript, python, Undefined
 	}
 
 	public enum PropertyType {
@@ -43,6 +43,8 @@ public class ScriptPerformer {
 			path = GROOVY_FILE_PATH;
 		} else if (this.lang.name().equals(Language.JavaScript.name())){
 			path = JAVASCRIPT_FILE_PATH;
+		} else if (this.lang.name().equals(Language.python.name())){
+			path = PYTHON_FILE_PATH;
 		}
 		String fileBody = new String(Files.readAllBytes(Paths.get(path)));
 		fileBody = injectProperties(fileBody, data, ScriptPerformer.PropertyType.GV);
