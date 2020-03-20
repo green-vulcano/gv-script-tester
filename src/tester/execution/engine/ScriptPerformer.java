@@ -15,6 +15,9 @@ import javax.script.*;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import it.greenvulcano.gvesb.identity.GVIdentityHelper;
+
 import static tester.settings.Constants.IS_FUNCTION;
 
 public class ScriptPerformer {
@@ -69,6 +72,7 @@ public class ScriptPerformer {
 		// setup the engine
 		engine.put("data", data);
 		engine.put("environment", environment);
+		engine.put("it.greenvulcano.gvesb.identity.GVIdentityHelper", GVIdentityHelper.class);
 		return engine;
 	}
 

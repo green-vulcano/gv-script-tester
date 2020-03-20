@@ -5,8 +5,7 @@ import static tester.execution.configuration.Paths.ENV_PROPERTIES_PATH_LAST_PART
 import static tester.execution.configuration.Paths.GV_DATA_BUFFER_PROPERTIES_NAME;
 import static tester.execution.configuration.Paths.GV_OUTPUT_DATA_BUFFER_PATH;
 import static tester.execution.configuration.Paths.LOG_FILE_PATH;
-import static tester.settings.Constants.IS_FUNCTION;
-import static tester.settings.Constants.LANGUAGE;
+import static tester.settings.Constants.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,6 +16,9 @@ import java.util.Map.Entry;
 
 import it.greenvulcano.gvesb.buffer.GVBuffer;
 import it.greenvulcano.gvesb.buffer.GVException;
+import it.greenvulcano.gvesb.identity.GVIdentityHelper;
+import it.greenvulcano.gvesb.identity.IdentityInfo;
+import it.greenvulcano.gvesb.identity.impl.DummyIdentityInfo;
 import tester.execution.buffer.BufferHandler;
 import tester.execution.engine.ScriptPerformer;
 import tester.execution.output.Visualizer;
@@ -30,6 +32,8 @@ public class GVScriptTester{
 		HashMap<String,GVBuffer> environment = new HashMap<String,GVBuffer>();
 		Files.write(Paths.get(LOG_FILE_PATH), "".getBytes());
 		initializeTest(data, environment);
+		initializeRoles();
+		
 		boolean conditionReturn;
 		try {
 			conditionReturn = executeTest(data, environment);
@@ -168,6 +172,12 @@ public class GVScriptTester{
 
 	public static void setInputBufferName(String inputBufferName) {
 		GVScriptTester.inputBufferName = inputBufferName;
+	}
+	
+	private static void initializeRoles() {
+		IdentityInfo newIdentity = new DummyIdentityInfo(NAME, ROLES, ADDRESSES);
+		newIdentity.getAttributes().put("id", ENTITY_ID);
+		GVIdentityHelper.push(newIdentity);
 	}
 
 }
