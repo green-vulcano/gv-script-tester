@@ -11,14 +11,17 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.script.*;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import it.greenvulcano.gvesb.identity.GVIdentityHelper;
+import tester.settings.Constants.LibraryNames;
 
 import static tester.settings.Constants.IS_FUNCTION;
+import static tester.execution.configuration.Paths.LIB_BASE_PATH;
 
 public class ScriptPerformer {
 
@@ -46,12 +49,20 @@ public class ScriptPerformer {
 			path = GROOVY_FILE_PATH;
 		} else if (this.lang.name().equals(Language.JavaScript.name())){
 			path = JAVASCRIPT_FILE_PATH;
+			// add external js library
+			for(LibraryNames lib:LibraryNames.values()) {
+				String libPath = LIB_BASE_PATH + lib.name() + ".js";
+				System.out.println("> Importing " + libPath + "\n");
+				String mustacheLib = new String(Files.readAllBytes(Paths.get(libPath)));
+				engine.eval(mustacheLib);
+			}
 		} else if (this.lang.name().equals(Language.python.name())){
 			path = PYTHON_FILE_PATH;
 		}
 		String fileBody = new String(Files.readAllBytes(Paths.get(path)));
 		fileBody = injectProperties(fileBody, data, ScriptPerformer.PropertyType.GV);
 		fileBody = injectProperties(fileBody, data, ScriptPerformer.PropertyType.XMLP);
+		
 		Object r = engine.eval(fileBody);
 		if(IS_FUNCTION) {
 			return (boolean)r;
@@ -66,7 +77,7 @@ public class ScriptPerformer {
 		// create a script engine manager
 		ScriptEngineManager factory = new ScriptEngineManager();
 
-		// create JavaScript engine
+		// create script engine
 		ScriptEngine engine = factory.getEngineByName(this.lang.name());
 
 		// setup the engine
