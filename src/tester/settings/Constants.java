@@ -1,8 +1,5 @@
 package tester.settings;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public interface Constants {
 	
 	//// Execution settings
