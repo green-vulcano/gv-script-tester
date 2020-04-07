@@ -18,9 +18,9 @@ public interface Constants {
 	
 	
 	/// External JS library
-	public static final Set<String> libName = new HashSet<String>();//"gvadmin";
+	public static final Boolean ENABLE_EXTERNAL_LIBRARIES = false;
 	public static enum LibraryNames {
-		mustache // '.js' will be added
+		initscope, mustache // '.js' will be automatically added
 	}
 	
 	//// Visual settings

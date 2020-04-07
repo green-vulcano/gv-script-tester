@@ -2,6 +2,7 @@ package tester.execution.engine;
 
 import static tester.execution.configuration.Paths.*;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.regex.Pattern;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,6 +23,7 @@ import it.greenvulcano.gvesb.identity.GVIdentityHelper;
 import tester.settings.Constants.LibraryNames;
 
 import static tester.settings.Constants.IS_FUNCTION;
+import static tester.settings.Constants.ENABLE_EXTERNAL_LIBRARIES;
 import static tester.execution.configuration.Paths.LIB_BASE_PATH;
 
 public class ScriptPerformer {
@@ -50,19 +53,14 @@ public class ScriptPerformer {
 		} else if (this.lang.name().equals(Language.JavaScript.name())){
 			path = JAVASCRIPT_FILE_PATH;
 			// add external js library
-			for(LibraryNames lib:LibraryNames.values()) {
-				String libPath = LIB_BASE_PATH + lib.name() + ".js";
-				System.out.println("> Importing " + libPath + "\n");
-				String mustacheLib = new String(Files.readAllBytes(Paths.get(libPath)));
-				engine.eval(mustacheLib);
-			}
+			addExternalJsLibs(engine);
 		} else if (this.lang.name().equals(Language.python.name())){
 			path = PYTHON_FILE_PATH;
 		}
 		String fileBody = new String(Files.readAllBytes(Paths.get(path)));
 		fileBody = injectProperties(fileBody, data, ScriptPerformer.PropertyType.GV);
 		fileBody = injectProperties(fileBody, data, ScriptPerformer.PropertyType.XMLP);
-		
+
 		Object r = engine.eval(fileBody);
 		if(IS_FUNCTION) {
 			return (boolean)r;
@@ -70,6 +68,17 @@ public class ScriptPerformer {
 			return true;
 		}
 
+	}
+
+	private void addExternalJsLibs(ScriptEngine engine) throws IOException, ScriptException {
+		if(ENABLE_EXTERNAL_LIBRARIES) {
+			for(LibraryNames lib:LibraryNames.values()) {
+				String libPath = LIB_BASE_PATH + lib.name() + ".js";
+				System.out.println("> Importing " + libPath + "\n");
+				String externalLib = new String(Files.readAllBytes(Paths.get(libPath)));
+				engine.eval(externalLib);
+			}
+		}
 	}
 
 	private ScriptEngine setupEngine(it.greenvulcano.gvesb.buffer.GVBuffer data,
